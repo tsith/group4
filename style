@@ -1,0 +1,31 @@
+#searcharea{
+	position:absolute;
+	left:40%;
+	margin-top:10%;
+}
+
+#abc{
+width:60%;
+height:60%;
+opacity:1;
+top:10%;
+left:10%;
+display:none;
+position:fixed;
+background-color:#00e5e6;
+overflow:auto
+}
+
+div#popupContact {
+position:absolute;
+left:50%;
+top:17%;
+margin-left:-202px;
+font-family:'Raleway',sans-serif
+}
+
+#selectYear{vertical-align:center;}
+
+#popup{text-decoration:underline; cursor:pointer;}
+
+#xbutton{float:right; display:block; position:relative;}
