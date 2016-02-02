@@ -2,7 +2,7 @@
 <head>
 	<title>Student Search</title>
 	<meta charset = "utf-8" /><!--sets the character encoding for unicode-->
-	<link rel='stylesheet' type ='text/css' href='mockStyle.css'/><!--links to my style sheet-->
+	<link rel='stylesheet' type ='text/css' href='style.css'/><!--links to my style sheet-->
 	<script type="text/javascript"></script>
 <body onload ="div_hide()">
 <div id = 'searcharea'>
