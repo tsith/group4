@@ -8,12 +8,27 @@
 		<table id = "mainTable" border ="1" style = "double" width = "60%">
 
 <?php
+include 'MainPage.php';
+include 'validation.php';
+
+//VARIABLES FOR SQL
+$author = $_POST['name'];
+$title = $_POST['title'];
+$keywords = $_POST['keywords'];
+$year = $_POST['Year'];
+$citationsMin = $_POST['citationsMin'];
+$citationsMax = $_POST['citationsMax'];
+
+$query = "";
 $con = mysqli_connect("csmysql.cs.cf.ac.uk", "c1416357", "efkiv6", "c1416357");
 //connects the database using my credentials. if it does not connect it "dies"
 //and displays an error
 if (!$con){
 	die("Failed to connect: " .mysqli_connect_error());
 }
+
+
+// chooseQuery() should be used here & the following $query definition removed.
 
 $query = "SELECT * FROM CompSci";
 $r = mysqli_query($con, $query);
@@ -25,45 +40,6 @@ while($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
 
 
 mysqli_close($con);  
-
-
-/*POTENTIAL QUERIES
-
-+searchByTitleID(int ID)
-"SELECT *
-FROM Paper
-WHERE TitleID = $ID"
-
-+searchByTitle(String title)
-"SELECT *
-FROM Paper
-WHERE Title = '$title'"
-
-+searchByAuthor(String author)
-"SELECT p.*
-FROM Author a, Paper p
-WHERE p.AuthorID = a.AuthorID
-AND a.Author = '$author'"
-
-+searchByCitations(int min, int max)
-"SELECT *
-FROM Paper
-WHERE CitationCount BETWEEN $min AND $max"
-
-+searchByTitleAuthor(String title, String author)
-"SELECT p.*
-FROM Author a, Paper p
-WHERE p.AuthorID = a.AuthorID
-AND p.Title = '$title'
-AND a.Author = '$author'"
-
-+searchByTitleAuthorCitations
-"SELECT p.*
-FROM Author a, Paper p
-WHERE p.AuthorID = a.AuthorID
-AND p.Title = '$title'
-AND a.Author = '$author'
-AND CitationCount BETWEEN $min AND $max"" */
 
 ?>
 
