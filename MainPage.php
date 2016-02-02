@@ -43,10 +43,12 @@ function checkTextField(){
 <h2>Additional Search</h2>
 <hr>
 <label>Author<input id="name" name="name" placeholder="e.g. McCain" size = "25" type="text"></label><br>
-<label>Title<input id="title" name="Title" placeholder="e.g. Networks and the internet" size = "25" type="text"></label><br>
+<label>Title<input id="title" name="5itle" placeholder="e.g. Networks and the internet" size = "25" type="text"></label><br>
 <label>Keywords<input id="keywords" name="keywords" placeholder="e.g. Networks, router" size = "25" type="text"></label><br>
 <label>Published in<input id="publisher" name="publisher" placeholder="e.g. Computer Science" size = "25" type="text"></label><br>
 <label>Year Published<input id="Year" name="Year" placeholder="e.g. 1996" size ="4" maxlength = "4" type="text"></label><br></label>
+<label>No. Of Citations (min)<input id="citationsMin" name="citationsMin" placeholder="e.g. 10" size ="1" maxlength = "4" type="text"></label><br></label>
+<label>No. Of Citations (max)<input id="citationsMax" name="citationsMax" placeholder="e.g. 120" size ="1" maxlength = "4" type="text"></label><br></label>
 <input id ="searchbutton" type = "submit" name="submit" value ="Search">
 
 </form>
