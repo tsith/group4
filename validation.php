@@ -12,8 +12,8 @@ function chooseQuery(){
 // USE MAIN SEARCH (TITLE)
     if (isset($title)){
         $query = "SELECT *
-        FROM Paper
-        WHERE TitleID = '$title'";
+                  FROM Paper
+                  WHERE TitleID = '$title'";
     }
 
     // SEARCH BY AUTHOR AND TITLE
