@@ -1,6 +1,6 @@
 <script>
     function chooseQuery(){
-        var title = document.getElementByID('title').value;
+        var title = document.getElementById('title').value;
         var author = document.getElementById('name').value;
         var keywords = document.getElementById('keywords').value;
         var publicationYear = document.getElementById('Year').value;
