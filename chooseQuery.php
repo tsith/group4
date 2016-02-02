@@ -81,7 +81,7 @@ function chooseQuery(){
                 WHERE p.CitationCount BETWEEN '$citationsMin' AND '$citationsMax'
                 AND p.TitleID = '$title'
                 AND a.Author = '$author'";
-    }
+    } else { $query = ""; }
     return $query;
 };
 
