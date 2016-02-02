@@ -9,15 +9,7 @@
 
 <?php
 include 'MainPage.php';
-include 'validation.php';
-
-//VARIABLES FOR SQL
-$author = $_POST['name'];
-$title = $_POST['title'];
-$keywords = $_POST['keywords'];
-$year = $_POST['Year'];
-$citationsMin = $_POST['citationsMin'];
-$citationsMax = $_POST['citationsMax'];
+include 'chooseQuery.php';
 
 $query = "";
 $con = mysqli_connect("csmysql.cs.cf.ac.uk", "c1416357", "efkiv6", "c1416357");
