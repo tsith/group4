@@ -16,7 +16,7 @@ function chooseQuery(){
                   WHERE TitleID = '$title'";
     }
 
-    // SEARCH BY AUTHOR AND TITLE
+// SEARCH BY AUTHOR AND TITLE
     if (isset($author) && isset($title)){
         $query = "SELECT p.*
                   FROM Author a, Paper p
@@ -25,14 +25,14 @@ function chooseQuery(){
                   AND a.Author = '$author'";
     }
 
-    // SEARCH BY KEYWORDS  (NOTE: NOT SURE IF KEYWORDS BEING INCLUDED? NOT IN DATABASE DIAGRAM)
+// SEARCH BY KEYWORDS  (NOTE: NOT SURE IF KEYWORDS BEING INCLUDED? NOT IN DATABASE DIAGRAM)
     if (isset($keywords)) {
         $query = "SELECT *
                   FROM Paper
                   WHERE keywords = '$keywords'";
     }
 
-    // SEARCH BY TITLE & KEYWORDS
+// SEARCH BY TITLE & KEYWORDS
     if (isset($keywords) && isset($title)) {
         $query = "SELECT *
                   FROM Paper
