@@ -7,7 +7,6 @@
     if (!empty($_POST['citationsMin'])) $citationsMin = $_POST['citationsMin'];
     if (!empty($_POST['citationsMax'])) $citationsMax = $_POST['citationsMax'];
 
-
     // USE MAIN SEARCH (TITLE)
     if (!empty($title)){
         $query = "SELECT *
@@ -96,8 +95,6 @@
 		<table id = "mainTable" border ="1" style = "double" width = "60%">
 
 <?php
-//include 'MainPage.php';
-
 $query = "";
 $con = mysqli_connect("csmysql.cs.cf.ac.uk", "c1416357", "efkiv6", "c1416357");
 //connects the database using my credentials. if it does not connect it "dies"
