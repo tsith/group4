@@ -38,7 +38,7 @@ function checkTextField(){
 <img src = "close.png" id = "xbutton" height = "40" weight = "40" onclick = "div_hide()">
 <div id="popupContact">
 <!-- Contact Us Form -->
-<form action="search.php" id="form" method="post" name="form">
+<form action="search.php" id="form" method="post" name="form" onsubmit="checkTextField(this)">
 
 <h2>Additional Search</h2>
 <hr>
