@@ -9,9 +9,16 @@ document.getElementById('abc').style.display = "none";
 
 //Function to check Search box is not empty
 function checkTextField(){
-	if (document.getElementById('title').value == ""){
-		alert("Search criteria is blank");
-		form = document.getElementById("searchform");
+	var content = "";
+	var correctInput = new RegExp("^[a-z A-Z ]+(\s[a-z A-Z ]+)?$");
+	var nameCheck = correctInput.exec(searchBox.titleOfPaper.value);
+
+	if (!nameCheck){
+      content += "Your search cannot contain digits, special characters or be empty \n\n";}
+
+    if(!content =="") //if content is not empty
+      {alert(content); 
+      	form = document.getElementById("searchform");
 		form.action = "MainPage.php";
 	}
 }
@@ -22,3 +29,4 @@ function checkAdditionalSearch(){
 		form = document.getElementById("form");
 		form.action = "MainPage.php";}
 	}
+
