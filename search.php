@@ -10,76 +10,81 @@
     // USE MAIN SEARCH (TITLE)
     if (!empty($title)){
         $query = "SELECT *
-        FROM Paper
-        WHERE TitleID = '$title'";
+        FROM Papers
+        WHERE Title = '$title'";
+    }
+
+    // SEARCH BY AUTHOR
+    if (!empty($author)){
+        $query = "SELECT *
+        FROM Papers
+        WHERE Authors = '$author'";
     }
 
     // SEARCH BY AUTHOR AND TITLE
-    if (!empty($author) && !empty($title)){
-        $query = "SELECT p.*
-        FROM Author a, Paper p
-        WHERE p.AuthorID = a.AuthorID
-        AND p.Title = '$title'
-        AND a.Author = '$author'";
+    else if (!empty($author) && !empty($title)){
+        $query = "SELECT *
+        FROM Papers
+        AND Title = '$title'
+        AND Authors = '$author'";
     }
 
     // SEARCH BY KEYWORDS  (NOTE: NOT SURE IF KEYWORDS BEING INCLUDED? NOT IN DATABASE DIAGRAM)
-    if (!empty($keywords)) {
+    else if (!empty($keywords)) {
         $query = "SELECT *
-        FROM Paper
+        FROM Papers
         WHERE keywords = '$keywords'";
     }
 
     // SEARCH BY TITLE & KEYWORDS
-    if (!empty($keywords) && !empty($title)) {
+    else if (!empty($keywords) && !empty($title)) {
         $query = "SELECT *
-        FROM Paper
+        FROM Papers
         WHERE keywords = '$keywords'
-        AND title = '$title'";
+        AND Title = '$title'";
     }
 
     // SEARCH BY AUTHOR, TITLE & KEYWORDS
-    if (!empty($keywords) && !empty($title) && !empty($author)) {
+    else if (!empty($keywords) && !empty($title) && !empty($author)) {
         $query = "SELECT *
-        FROM Paper p, Author a
-        WHERE p.keywords = '$keywords'
-        AND p.title = '$title'
-        AND a.Author = '$author'";
+        FROM Papers
+        WHERE keywords = '$keywords'
+        AND Title = '$title'
+        AND Authors = '$author'";
     }
 
     // SEARCH BY AUTHOR, TITLE & PUBLICATION YEAR
-    if (!empty($author) && !empty($title) && !empty($publicationYear)){
-        $query = "SELECT p.*
-        FROM Author a, Paper p
-        WHERE p.AuthorID = a.AuthorID
-        AND p.Title = '$title'
-        AND a.Author = '$author'
-        AND p.PYear = '$year'";
+    else if (!empty($author) && !empty($title) && !empty($publicationYear)){
+        $query = "SELECT *
+        FROM Papers
+        WHERE Title = '$title'
+        AND Authors = '$author'
+        AND Year = '$publicationYear'";
     }
 
     //SEARCH BY NO. OF CITATIONS
-    if (!empty($citationsMin) && !empty($citationsMax)) {
+    else if (!empty($citationsMin) && !empty($citationsMax)) {
         $query = "SELECT *
-        FROM Paper
-        WHERE CitationCount BETWEEN '$citationsMin' AND '$citationsMax'";
+        FROM Papers
+        WHERE Cites BETWEEN '$citationsMin' AND '$citationsMax'";
     }
 
     // SEARCH BY NO. OF CITATIONS & TITLE
-    if (!empty($title) && !empty($citationsMin) && !empty($citationsMax)) {
+    else if (!empty($title) && !empty($citationsMin) && !empty($citationsMax)) {
         $query = "SELECT *
-        FROM Paper
-        WHERE CitationCount BETWEEN '$citationsMin' AND '$citationsMax'
-        AND TitleID = '$title'";
+        FROM Papers
+        WHERE Cites BETWEEN '$citationsMin' AND '$citationsMax'
+        AND Title = '$title'";
     }
 
     // SEARCH BY NO. OF CITATIONS, TITLE & AUTHOR
-    if (!empty($title) && !empty($author) && !empty($citationsMin) && !empty($citationsMax)) {
+    else if (!empty($title) && !empty($author) && !empty($citationsMin) && !empty($citationsMax)) {
         $query = "SELECT *
-        FROM Paper p, Author a
-        WHERE p.CitationCount BETWEEN '$citationsMin' AND '$citationsMax'
-        AND p.TitleID = '$title'
-        AND a.Author = '$author'";
-    } else { $query = ""; }
+        FROM Papers
+        WHERE Cites BETWEEN '$citationsMin' AND '$citationsMax'
+        AND Title = '$title'
+        AND Authors = '$author'";
+    }
 
     return $query;
 
@@ -95,19 +100,20 @@
 		<table id = "mainTable" border ="1" style = "double" width = "60%">
 
 <?php
-$query = "";
-$con = mysqli_connect("csmysql.cs.cf.ac.uk", "c1416357", "efkiv6", "c1416357");
+
+$user = 'root'; // TO BE UPDATED WITH ONLINE ACCOUNT
+$pass = '';
+$con = mysqli_connect('localhost', $user, $pass, 'scientificpapers');
 //connects the database using my credentials. if it does not connect it "dies"
 //and displays an error
 if (!$con){
 	die("Failed to connect: " .mysqli_connect_error());
 }
 
-
-
 $query = chooseQuery(); // $query variable to replace following MySql statement once correct database is created.
-$r = mysqli_query($con, "SELECT * FROM CompSci");
-while($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
+$r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
+    or die("Failed to connect: " .mysqli_error($con));
+while($row = mysqli_fetch_array($r)){
 	echo "<tr>";
 	echo "<td><br>".$row['Authors']."</td>";
 	echo "<td>".$row['Title']."</td>";
