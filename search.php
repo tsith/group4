@@ -15,7 +15,7 @@
     }
 
     // SEARCH BY AUTHOR
-    if (!empty($author)){
+    else if (!empty($author)){
         $query = "SELECT *
         FROM Papers
         WHERE Authors = '$author'";
@@ -25,11 +25,11 @@
     else if (!empty($author) && !empty($title)){
         $query = "SELECT *
         FROM Papers
-        AND Title = '$title'
+        WHERE Title = '$title'
         AND Authors = '$author'";
     }
 
-    // SEARCH BY KEYWORDS  (NOTE: NOT SURE IF KEYWORDS BEING INCLUDED? NOT IN DATABASE DIAGRAM)
+    // SEARCH BY KEYWORDS  (NOTE: NOT SU RE IF KEYWORDS BEING INCLUDED? NOT IN DATABASE DIAGRAM)
     else if (!empty($keywords)) {
         $query = "SELECT *
         FROM Papers
@@ -101,7 +101,7 @@
 
 <?php
 
-$user = 'root'; // TO BE UPDATED WITH ONLINE ACCOUNT
+$user = 'root';
 $pass = '';
 $con = mysqli_connect('localhost', $user, $pass, 'scientificpapers');
 //connects the database using my credentials. if it does not connect it "dies"
@@ -109,6 +109,8 @@ $con = mysqli_connect('localhost', $user, $pass, 'scientificpapers');
 if (!$con){
 	die("Failed to connect: " .mysqli_connect_error());
 }
+
+
 
 $query = chooseQuery(); // $query variable to replace following MySql statement once correct database is created.
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
