@@ -9,7 +9,7 @@
 			<h1>Student Scholar</h1>
 			<h3>Search for a paper</h3>
 			<form method ="post" name ="searchBox"  action ="search.php" id="searchform">
-			<input type='text' name = 'titleOfPaper' id = "title"  size = '15' placeholder = 'Search...' autofocus>
+			<input type='text' name = 'title' id = "title"  size = '15' placeholder = 'Search by Title..' autofocus>
 			<input id ="searchbutton" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
 			<href="#" onclick= "div_show()" id="popup">Additional Search
 			
