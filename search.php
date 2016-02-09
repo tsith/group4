@@ -126,8 +126,7 @@ while($row = mysqli_fetch_array($r)){
 	echo "<tr>";
 	echo "<td><br>".$row['Authors']."</td>";
 	echo "<td>".$row['Title']."</td>";
-    echo "<td>".$row['ArticleURL']."</td>";
-    echo "<td>".$row['Type']."</td>";
+    	echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
 
 }
 
