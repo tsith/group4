@@ -53,6 +53,13 @@
         AND Authors = '$author'";
     }
 
+    // SEARCH BY PUBLICATION YEAR
+    else if (!empty($publicationYear)) {
+        $query = "SELECT *
+        FROM Papers
+        WHERE Year = '$publicationYear'";
+    }
+
     // SEARCH BY AUTHOR, TITLE & PUBLICATION YEAR
     else if (!empty($author) && !empty($title) && !empty($publicationYear)){
         $query = "SELECT *
@@ -119,6 +126,9 @@ while($row = mysqli_fetch_array($r)){
 	echo "<tr>";
 	echo "<td><br>".$row['Authors']."</td>";
 	echo "<td>".$row['Title']."</td>";
+    echo "<td>".$row['ArticleURL']."</td>";
+    echo "<td>".$row['Type']."</td>";
+
 }
 
 mysqli_close($con);
