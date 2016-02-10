@@ -11,7 +11,9 @@ function connect($host, $user, $pass, $database)
 
 
 function closeConnection($connection) {
-    mysqli_close($connection);
+    $closeCon = mysqli_close($connection);
+
+    if ($closeCon == 0) { echo "Failed to close database connection."; }
 }
 
 
