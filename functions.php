@@ -110,7 +110,7 @@ function chooseQuery(){
         AND Authors = '$author'";
     }
 
-    //else { die("Failed to find correct query."); }
+    else { die("Failed to find correct query."); }
 
     return $query;
 
