@@ -3,7 +3,7 @@
 	<title>Group 4 SPMIS</title>
 	<meta charset = "utf-8" /><!--sets the character encoding for unicode-->
 	<link rel='stylesheet' type ='text/css' href='style.css'/><!--links to my style sheet-->
-
+	<link rel='stylesheet' type ='text/css' href= 'foundation.css'/>
 	<body>
 		<table id = "mainTable" border ="1" style = "double" width = "60%">
 
