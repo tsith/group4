@@ -1,20 +1,96 @@
-#searcharea{
+.area{
 	position:absolute;
 	left:40%;
 	margin-top:10%;
+	width: 300px;
+  	vertical-align: middle;
+  	white-space: nowrap;
+ 	position: relative;
+ }
+ h1{
+  color: red;
+ }
+ h3{
+  color:  #283D23;
+ }
+body{
+  background: #343d46;
+}
+
+.container-1{
+    width: 350px;
+  vertical-align: middle;
+  white-space: nowrap;
+  /* position: relative; */
+}
+.container-1 input#search{
+  width: 300px;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  color: #fff;
+  padding-left: 15px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  
+  -webkit-transition: all .55s ease;
+  -moz-transition: all .55s ease;
+  -ms-transition: all .55s ease;
+  -o-transition: all .55s ease;
+  transition: all .55s ease;
+}
+
+.container-1 input#search::-webkit-input-placeholder {
+   color: #65737e;
+}
+.container-1 input#search:-moz-placeholder { /* Firefox 18- */
+   color: #65737e;  
+}
+.container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #65737e;  
+}
+.container-1 input#search:-ms-input-placeholder {  
+   color: #65737e;  
+}
+
+.container-1 button.icon{
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: none;
+  background: #232833;
+  height: 50px;
+  width: 50px;
+  color: #4f5b66;
+  opacity: 0;
+  font-size: 10pt;
+  -webkit-transition: all .55s ease;
+  -moz-transition: all .55s ease;
+  -ms-transition: all .55s ease;
+  -o-transition: all .55s ease;
+  transition: all .55s ease;
 }
 
 #abc{
-width:60%;
+width:80%;
 height:60%;
 opacity:1;
 top:10%;
 left:10%;
 display:none;
 position:fixed;
-background-color:#00e5e6;
-overflow:auto
+border: 1px;
+overflow:auto;
+background-color:#FFFFFF;
+
 }
+
 
 div#popupContact {
 position:absolute;
@@ -29,3 +105,5 @@ font-family:'Raleway',sans-serif
 #popup{text-decoration:underline; cursor:pointer;}
 
 #xbutton{float:right; display:block; position:relative;}
+
+#IndentBit{text-indent:9.7em;}
