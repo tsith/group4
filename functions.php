@@ -30,7 +30,7 @@ function chooseQuery(){
     if (!empty($title)){
         $query = "SELECT *
         FROM Papers
-        WHERE Title = '$title'";
+        WHERE Title LIKE '%$title%'";
     }
 
     // SEARCH BY AUTHOR
@@ -44,7 +44,7 @@ function chooseQuery(){
     else if (!empty($author) && !empty($title)){
         $query = "SELECT *
         FROM Papers
-        WHERE Title = '$title'
+        WHERE Title LIKE '%$title%'
         AND Authors = '$author'";
     }
 
@@ -68,7 +68,7 @@ function chooseQuery(){
         $query = "SELECT *
         FROM Papers
         WHERE keywords = '$keywords'
-        AND Title = '$title'
+        AND LIKE '%$title%'
         AND Authors = '$author'";
     }
 
@@ -83,7 +83,7 @@ function chooseQuery(){
     else if (!empty($author) && !empty($title) && !empty($publicationYear)){
         $query = "SELECT *
         FROM Papers
-        WHERE Title = '$title'
+        WHERE LIKE '%$title%'
         AND Authors = '$author'
         AND Year = '$publicationYear'";
     }
@@ -107,8 +107,8 @@ function chooseQuery(){
     else if (!empty($title) && !empty($author) && !empty($citationsMin) && !empty($citationsMax)) {
         $query = "SELECT *
         FROM Papers
-        WHERE Cites BETWEEN '$citationsMin' AND '$citationsMax'
-        AND Title = '$title'
+        WHERE Title LIKE '%$title%'
+        AND (Cites BETWEEN '$citationsMin' AND '$citationsMax')
         AND Authors = '$author'";
     }
 
