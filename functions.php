@@ -62,7 +62,6 @@ function removeCommonWords($commonWords, $inputString) { // remove pre-defined c
         if(!in_array($value, $commonWords)){
             $outputString[] = $value;
         }
-
     }
     $outputString = implode(" ", $outputString);
     return $outputString;
