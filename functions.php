@@ -47,9 +47,7 @@ function setVal($value) {  // set all POST values with this function
             $value = $_POST['citationsMax'];
         } else $value = '';
     }
-
-    else {die("Error: No POST values set -> Please check you have entered something to search for."); }
-
+    //NOTE: Some form of error handling must be added to this function
     return $value;
 }
 
@@ -62,6 +60,7 @@ function removeCommonWords($commonWords, $inputString) { // remove pre-defined c
         if(!in_array($value, $commonWords)){
             $outputString[] = $value;
         }
+
     }
     $outputString = implode(" ", $outputString);
     return $outputString;
