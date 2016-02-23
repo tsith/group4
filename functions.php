@@ -1,7 +1,7 @@
 <?php
 
-function connect($host, $user, $pass, $database)
-{
+function connect($host, $user, $pass, $database){ // connect to database
+
     if (!mysqli_connect($host, $user, $pass, $database)) {
         return die("Failed to connect: " . mysqli_connect_error());
     }
@@ -10,21 +10,68 @@ function connect($host, $user, $pass, $database)
 }
 
 
-function closeConnection($connection) {
+function closeConnection($connection) { // closes & checks connection is closed
     $closeCon = mysqli_close($connection);
 
     if ($closeCon == 0) { echo "Failed to close database connection."; }
 }
 
+function setVal($value) {  // set all POST values with this function
+
+    if (strcmp($value, 'title') == 0) {
+        if (!empty($_POST['title'])) {
+            $value = $_POST['title'];
+        } else $value = '';
+    }
+
+    else if (strcmp($value, 'author') == 0) {
+        if (!empty($_POST['name'])) {
+            $value = $_POST['name'];
+        } else $value = '';
+    }
+
+    else if (strcmp($value, 'publicationYear') == 0) {
+        if (!empty($_POST['Year'])) {
+            $value = $_POST['Year'];
+        } else $value = '';
+    }
+
+    else if (strcmp($value, 'citationsMin') == 0) {
+        if (!empty($_POST['citationsMin'])) {
+            $value = $_POST['citationsMin'];
+        } else $value = '';
+    }
+
+    else if (strcmp($value, 'citationsMax') == 0) {
+        if (!empty($_POST['citationsMax'])) {
+            $value = $_POST['citationsMax'];
+        } else $value = '';
+    }
+
+    else {die("Error: No POST values set -> Please check you have entered something to search for."); }
+
+    return $value;
+}
+
+function removeCommonWords($commonWords, $inputString) { // remove pre-defined common words
+    $commonWords = str_replace(' ', '', $commonWords); // removes whitespace from commonWords var
+    $commonWords = explode(",", $commonWords);
+    $inputString = explode(" " , $inputString);
+
+    foreach($inputString as $value){
+        if(!in_array($value, $commonWords)){
+            $outputString[] = $value;
+        }
+
+    }
+    $outputString = implode(" ", $outputString);
+    return $outputString;
+}
+
 
 function chooseQuery(){
+    global $title, $author, $publicationYear, $citationsMin, $citationsMax;
     $query = "";
-    if (!empty($_POST['name'])) $author = $_POST['name'];
-    if (!empty($_POST['title'])) $title = $_POST['title'];
-    if (!empty($_POST['keywords'])) $keywords = $_POST['keywords'];
-    if (!empty($_POST['Year'])) $publicationYear = $_POST['Year'];
-    if (!empty($_POST['citationsMin'])) $citationsMin = $_POST['citationsMin'];
-    if (!empty($_POST['citationsMax'])) $citationsMax = $_POST['citationsMax'];
 
     // USE MAIN SEARCH (TITLE)
     if (!empty($title) && empty($author)){
@@ -112,7 +159,7 @@ function chooseQuery(){
         AND Authors = '$author'";
     }
 
-    else { die("Failed to find correct query."); }
+    else { die("Error: Failed to find correct query."); }
 
     return $query;
 
