@@ -27,17 +27,17 @@ function chooseQuery(){
     if (!empty($_POST['citationsMax'])) $citationsMax = $_POST['citationsMax'];
 
     // USE MAIN SEARCH (TITLE)
-    if (!empty($title)){
+    if (!empty($title) && empty($author)){
         $query = "SELECT *
         FROM Papers
         WHERE Title LIKE '%$title%'";
     }
 
     // SEARCH BY AUTHOR
-    else if (!empty($author)){
+    else if (!empty($author) && empty ($title)){
         $query = "SELECT *
         FROM Papers
-        WHERE Authors = '$author'";
+        WHERE Authors LIKE '%$author%'";
     }
 
     // SEARCH BY AUTHOR AND TITLE
@@ -45,18 +45,18 @@ function chooseQuery(){
         $query = "SELECT *
         FROM Papers
         WHERE Title LIKE '%$title%'
-        AND Authors = '$author'";
+        AND Authors LIKE '%$author%'";
     }
 
     // SEARCH BY KEYWORDS  (NOTE: NOT SU RE IF KEYWORDS BEING INCLUDED? NOT IN DATABASE DIAGRAM)
-    else if (!empty($keywords)) {
+    else if (!empty($keywords) && empty($author) && empty($title) && empty($publicationYear) && empty ($citationsMax) && empty($citationsMin)) {
         $query = "SELECT *
         FROM Papers
         WHERE keywords = '$keywords'";
     }
 
     // SEARCH BY TITLE & KEYWORDS
-    else if (!empty($keywords) && !empty($title)) {
+    else if (!empty($keywords) && !empty($title) && empty($author) && empty($publicationYear) && empty($citationsMin) && empty($citationsMax)) {
         $query = "SELECT *
         FROM Papers
         WHERE keywords = '$keywords'
@@ -64,7 +64,7 @@ function chooseQuery(){
     }
 
     // SEARCH BY AUTHOR, TITLE & KEYWORDS
-    else if (!empty($keywords) && !empty($title) && !empty($author)) {
+    else if (!empty($keywords) && !empty($title) && !empty($author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin)) {
         $query = "SELECT *
         FROM Papers
         WHERE keywords = '$keywords'
@@ -73,14 +73,14 @@ function chooseQuery(){
     }
 
     // SEARCH BY PUBLICATION YEAR
-    else if (!empty($publicationYear)) {
+    else if (!empty($publicationYear) && empty($title) && empty($author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin)) {
         $query = "SELECT *
         FROM Papers
         WHERE Year = '$publicationYear'";
     }
 
     // SEARCH BY AUTHOR, TITLE & PUBLICATION YEAR
-    else if (!empty($author) && !empty($title) && !empty($publicationYear)){
+    else if (!empty($author) && !empty($title) && !empty($publicationYear) && empty($keywords) && empty($citationsMax) && empty($citationsMin)){
         $query = "SELECT *
         FROM Papers
         WHERE LIKE '%$title%'
@@ -89,14 +89,14 @@ function chooseQuery(){
     }
 
     //SEARCH BY NO. OF CITATIONS
-    else if (!empty($citationsMin) && !empty($citationsMax)) {
+    else if (!empty($citationsMin) && !empty($citationsMax) && empty($title) && empty($author) and empty($keywords) and empty($publicationYear)) {
         $query = "SELECT *
         FROM Papers
         WHERE Cites BETWEEN '$citationsMin' AND '$citationsMax'";
     }
 
     // SEARCH BY NO. OF CITATIONS & TITLE
-    else if (!empty($title) && !empty($citationsMin) && !empty($citationsMax)) {
+    else if (!empty($title) && !empty($citationsMin) && !empty($citationsMax) && empty($author) and empty($keywords) and empty($publicationYear)) {
         $query = "SELECT *
         FROM Papers
         WHERE Cites BETWEEN '$citationsMin' AND '$citationsMax'
@@ -104,7 +104,7 @@ function chooseQuery(){
     }
 
     // SEARCH BY NO. OF CITATIONS, TITLE & AUTHOR
-    else if (!empty($title) && !empty($author) && !empty($citationsMin) && !empty($citationsMax)) {
+    else if (!empty($title) && !empty($author) && !empty($citationsMin) && !empty($citationsMax) and empty($keywords) and empty($publicationYear)) {
         $query = "SELECT *
         FROM Papers
         WHERE Title LIKE '%$title%'
