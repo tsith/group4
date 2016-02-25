@@ -22,7 +22,7 @@ $citationsMax = removeCommonWords($commonWords, setVal('citationsMax'));
 
 $query = chooseQuery();
 
-//echo $query;
+echo $query;
 
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
@@ -37,11 +37,4 @@ while($row = mysqli_fetch_array($r)){
 closeConnection($con);
 
 ?>
-<form name = "sortingbox" action = "" method = "POST">
-		<Select id = "sortBox" name ="sortingBy">
-			<option name = "#_of_Citations" value = "0" >Num of Citations</option>
-			<option name = "Publish_Date" value = "1" >Publish Date</option>
-		</select>
-		<input id ="sortbutton" type = "submit" value ="Sort"><!--button that sorts-->
-	</form>
 </html>
