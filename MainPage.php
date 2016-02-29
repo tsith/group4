@@ -12,22 +12,23 @@
 			<h1>Student Scholar</h1>
 			<h3>Search for a paper</h3>
 			<form method ="post" name ="searchBox"  action ="search.php" id="searchform">
-				<input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' autofocus>
-			       
-			        <select class="sort" name="sort" form="searchform">
-		                    <option value="" disabled selected>Sort by:</option>
-		                    <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
-		                    <option value="sortCitationsAsc" name="sortCitationsAsc">Least Citations</option>
-		                    <option value="sortYearAsc" name="sortYearAsc">Oldest</option>
-		                    <option value="sortYearDesc" name="sortYearDesc">Newest</option>
-        			 </select>
-			
-				<input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
-			<br>
-			<!--<href="#" id = "AdditionalSearch" class = "button" onclick= "div_show()" id="popup">Additional Search-->
+                <input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' autofocus >
+
+                <select class="sort" name="sort" form="searchform">
+                    <option value="" disabled selected>Sort by:</option>
+                    <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
+                    <option value="sortCitationsAsc" name="sortCitationsAsc">Least Citations</option>
+                    <option value="sortYearAsc" name="sortYearAsc">Oldest</option>
+                    <option value="sortYearDesc" name="sortYearDesc">Newest</option>
+                </select>
+
+                <input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
+                <br>
+
+                <!--<href="#" id = "AdditionalSearch" class = "button" onclick= "div_show()" id="popup">Additional Search-->
 			<div id="IndentBit"><input id="AdditionalSearch" class= "button" href="#" onclick="div_show()" id= "popup" width="5" value="Additional Search"></div>
 			
-			</form> 	     
+			</form>
  	</div>
 </div>
 
@@ -50,6 +51,16 @@
 	<label>Year Published<input id="Year" name="Year" placeholder="e.g. 1996" size ="4" maxlength = "4" type="text"></label></label>
 	<label>No. Of Citations (min)<input id="citationsMin" name="citationsMin" placeholder="e.g. 10" size ="4" maxlength = "4" type="text"></label></label>
 	<label>No. Of Citations (max)<input id="citationsMax" name="citationsMax" placeholder="e.g. 120" size ="4" maxlength = "4" type="text"></label></label>
+
+        <select class="sort" name="sort" form="searchform">
+            <option value="" disabled selected>Sort by:</option>
+            <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
+            <option value="sortCitationsAsc" name="sortCitationsAsc">Least Citations</option>
+            <option value="sortYearAsc" name="sortYearAsc">Oldest</option>
+            <option value="sortYearDesc" name="sortYearDesc">Newest</option>
+        </select>
+
+        
 	<input id ="searchbutton" class="button float-right" type = "submit" name="submit" value ="Search" onclick ="checkAdditionalSearch(this)">
 
 	</form>
