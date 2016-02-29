@@ -92,6 +92,12 @@ background-color:#FFFFFF;
 }
 
 
+.sort {  
+    max-width: 30%;
+    margin-left: 10px;
+}
+
+
 div#popupContact {
 position:absolute;
 left:50%;
