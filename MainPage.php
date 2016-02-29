@@ -12,8 +12,17 @@
 			<h1>Student Scholar</h1>
 			<h3>Search for a paper</h3>
 			<form method ="post" name ="searchBox"  action ="search.php" id="searchform">
-			<input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' autofocus>
-			<input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
+				<input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' autofocus>
+			       
+			        <select class="sort" name="sort" form="searchform">
+		                    <option value="" disabled selected>Sort by:</option>
+		                    <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
+		                    <option value="sortCitationsAsc" name="sortCitationsAsc">Least Citations</option>
+		                    <option value="sortYearAsc" name="sortYearAsc">Oldest</option>
+		                    <option value="sortYearDesc" name="sortYearDesc">Newest</option>
+        			 </select>
+			
+				<input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
 			<br>
 			<!--<href="#" id = "AdditionalSearch" class = "button" onclick= "div_show()" id="popup">Additional Search-->
 			<div id="IndentBit"><input id="AdditionalSearch" class= "button" href="#" onclick="div_show()" id= "popup" width="5" value="Additional Search"></div>
