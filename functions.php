@@ -47,6 +47,13 @@ function setVal($value) {  // set all POST values with this function
             $value = $_POST['citationsMax'];
         } else $value = '';
     }
+
+    else if (strcmp($value, 'sort') == 0) {
+        if (!empty($_POST['sort'])) {
+            $value = $_POST['sort'];
+        } else $value = '';
+    }
+
     //NOTE: Some form of error handling must be added to this function
     return $value;
 }
@@ -162,5 +169,26 @@ function chooseQuery(){
     return $query;
 
 };
+
+
+function sortBy($sortSelection) {
+    $sortBy = "";
+
+    if (isset($sortBy)) {
+        if ($sortSelection == 'sortCitationsAsc') {
+            $sortBy = " ORDER BY Cites ASC";
+        } else if ($sortSelection == 'sortCitationsDesc') {
+            $sortBy = " ORDER BY Cites DESC";
+        } else if ($sortSelection == 'sortYearAsc') {
+            $sortBy = " ORDER BY Year ASC";
+        } else if ($sortSelection == 'sortYearDesc') {
+            $sortBy = " ORDER BY Year DESC";
+        } else {
+            $sortBy = " ORDER BY Cites DESC";
+        }
+    }
+
+    return $sortBy;
+}
 
 ?>
