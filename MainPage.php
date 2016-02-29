@@ -52,7 +52,7 @@
 	<label>No. Of Citations (min)<input id="citationsMin" name="citationsMin" placeholder="e.g. 10" size ="4" maxlength = "4" type="text"></label></label>
 	<label>No. Of Citations (max)<input id="citationsMax" name="citationsMax" placeholder="e.g. 120" size ="4" maxlength = "4" type="text"></label></label>
 
-        <select class="sort" name="sort" form="searchform">
+        <select class="sort" name="sort" form="form">
             <option value="" disabled selected>Sort by:</option>
             <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
             <option value="sortCitationsAsc" name="sortCitationsAsc">Least Citations</option>
