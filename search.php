@@ -14,15 +14,22 @@ $con = connect('csmysql.cs.cf.ac.uk', 'c1433846', 'udruc3', 'c1433846');
 
 $commonWords = 'and,the';
 
+// GET USER INPUT VALUES & REMOVE COMMON WORDS
 $title = removeCommonWords($commonWords, setVal('title'));
 $author = removeCommonWords($commonWords, setVal('author'));
 $publicationYear = removeCommonWords($commonWords, setVal('year'));
 $citationsMin = removeCommonWords($commonWords, setVal('citationsMin'));
 $citationsMax = removeCommonWords($commonWords, setVal('citationsMax'));
 
-$query = chooseQuery();
+// GET SORT SELECTION VALUES
+$sortSelection = setVal('sort');
+
+// FUNCTION TO CHOOSE CORRECT QUERY AND SORT IF NECESSARY
+$query = chooseQuery() . sortBy($sortSelection);
 
 echo $query;
+
+
 
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
