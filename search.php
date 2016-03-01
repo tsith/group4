@@ -10,7 +10,7 @@
 <?php
 
 include "functions.php";
-$con = connect('csmysql.cs.cf.ac.uk', 'c1433846', 'udruc3', 'c1433846');
+$con = connect('csmysql.cs.cf.ac.uk', 'group4.2015', 'A3bb6@4kmna', 'group4_2015');
 
 $commonWords = 'and,the';
 
