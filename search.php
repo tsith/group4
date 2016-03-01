@@ -26,8 +26,10 @@ $sortSelection = setVal('sort');
 
 // FUNCTION TO CHOOSE CORRECT QUERY AND SORT IF NECESSARY
 $query = chooseQuery() . sortBy($sortSelection);
+$keywords = keywordCount($title);
 
 echo $query;
+echo $keywords;
 
 
 
