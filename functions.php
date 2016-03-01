@@ -190,5 +190,12 @@ function sortBy($sortSelection) {
 
     return $sortBy;
 }
+function keywordCount($keywordInput){
+    $text = $keywordInput;
+    $words = str_word_count($text,1);
+    $frequency = array_count_values($words);
+    arsort($frequency);
+    print_r($frequency);
+}
 
 ?>
