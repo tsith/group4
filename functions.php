@@ -23,7 +23,7 @@ function setVal($value) {  // set all POST values with this function
             $value = $_POST['title'];
         } else $value = '';
     }
-
+    
     else if (strcmp($value, 'author') == 0) {
         if (!empty($_POST['name'])) {
             $value = $_POST['name'];
@@ -203,5 +203,14 @@ function keywordCount($keywordInput){
     arsort($frequency);
     print_r($frequency);
 }
+
+    
+/* Query to use in suggested papers function
+SELECT *
+FROM Papers p, suggestedPapers sp
+WHERE sp.Publisher = '$publisher'
+AND p.title = sp.title
+Order by p.Cites DESC
+LIMIT 5; */
 
 ?>
