@@ -18,6 +18,7 @@ $commonWords = 'and,the';
 $title = removeCommonWords($commonWords, setVal('title'));
 $author = removeCommonWords($commonWords, setVal('author'));
 $publicationYear = removeCommonWords($commonWords, setVal('year'));
+$publisher = removeCommonWords($commonWords, setVal('publisher'));
 $citationsMin = removeCommonWords($commonWords, setVal('citationsMin'));
 $citationsMax = removeCommonWords($commonWords, setVal('citationsMax'));
 
