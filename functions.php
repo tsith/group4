@@ -53,6 +53,12 @@ function setVal($value) {  // set all POST values with this function
             $value = $_POST['sort'];
         } else $value = '';
     }
+    
+    else if (strcmp($value, 'publisher') == 0) {
+        if (!empty($_POST['publisher'])) {
+            $value = $_POST['publisher'];
+        } else $value = '';
+    }
 
     //NOTE: Some form of error handling must be added to this function
     return $value;
