@@ -47,4 +47,19 @@ while($row = mysqli_fetch_array($r)){
 closeConnection($con);
 
 ?>
+<table id = "suggestedTable" border ="2" style = "double" width = "20%">
+<?php
+$test = suggestedPapers($publisher);
+
+$r1 = mysqli_query($con, $test, MYSQLI_STORE_RESULT)
+    or die("Failed to connect: " . mysqli_error($con));
+
+while($row = mysqli_fetch_array($r1)){
+	echo "<tr>";
+	echo "<td><br>".$row['Authors']."</td>";
+	echo "<td>".$row['Title']."</td>";
+    echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
+
+}
+?>
 </html>
