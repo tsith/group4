@@ -204,13 +204,16 @@ function keywordCount($keywordInput){
     print_r($frequency);
 }
 
-    
-/* Query to use in suggested papers function
-SELECT *
-FROM Papers p, suggestedPapers sp
-WHERE sp.Publisher = '$publisher'
-AND p.title = sp.title
-Order by p.Cites DESC
-LIMIT 5; */
+function suggestedPapers($publisher){
+    $suggested = "";
+        if(!empty($publisher)){
+            $suggested = "SELECT *
+            FROM Papers p, suggestedPapers sp
+            WHERE sp.Publisher = '$publisher'
+            AND p.title = sp.title
+            Order by p.Cites DESC
+            LIMIT 5";     }
+        return $suggested;
+}
 
 ?>
