@@ -205,15 +205,23 @@ function keywordCount($keywordInput){
 }
 
 function suggestedPapers($publisher){
+    global $title;
     $suggested = "";
-        if(!empty($publisher)){
-            $suggested = "SELECT *
-            FROM Papers p, suggestedPapers sp
-            WHERE sp.Publisher = '$publisher'
-            AND p.title = sp.title
-            Order by p.Cites DESC
-            LIMIT 5";     }
-        return $suggested;
+    if(!empty($publisher)){
+        $suggested = "SELECT *
+        FROM Papers p, suggestedPapers sp
+        WHERE sp.Publisher = '$publisher'
+        AND p.title = sp.title
+        Order by p.Cites DESC
+        LIMIT 5"; }
+
+    else{
+        $suggested = "SELECT *
+        FROM Papers
+        WHERE Title LIKE '%$title%'
+        AND Keywords LIKE Keywords
+        LIMIT 10";}
+    return $suggested;
 }
 
 ?>
