@@ -1,3 +1,9 @@
+<?php
+$cookie_name = "User";
+$cookie_value = "User";
+setcookie($cookie_name, $cookie_value);
+?>
+
 <html lang ="en">
 <head>
 	<title>Student Search</title>
@@ -9,6 +15,14 @@
 <body onload ="div_hide()">
 <div class="area">
 <div class = 'container-1'>
+<?php
+if(isset($_COOKIE[$cookie_name])) {
+    echo "Welcome Back " . $_COOKIE[$cookie_name];
+    echo "<br><a href='https://intranet.cardiff.ac.uk/'>Previous Searches</a>";
+}
+else{echo "No cookies set";}
+?>
+	
 			<h1>Student Scholar</h1>
 			<h3>Search for a paper</h3>
 			<form method ="post" name ="searchBox"  action ="search.php" id="searchform">
