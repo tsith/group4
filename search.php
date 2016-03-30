@@ -32,11 +32,13 @@ $keywords = keywordCount($title);
 echo $query;
 echo $keywords;
 
-if( ( $query != null ))
-{
+if (!isset($_COOKIE['Query'])){
   setcookie("Query", $title);
 }
-echo "Previous Search =  ". $_COOKIE['Query']."<BR>";
+if(isset($_COOKIE['Query'])){
+	setcookie("Query", $title);
+	echo "<a href='MainPage.php'>Previous Searches</a>";
+}
 
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
