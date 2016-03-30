@@ -1,8 +1,9 @@
 <?php
-if( ( $query = null )){
-	setcookie( "Query", $title);
-	}
-echo "Previous Search =  ". $_COOKIE['Query']."<BR>";
+if (isset($_COOKIE['Query'])){
+	echo "Previous Search =  ". $_COOKIE['Query']."<BR>";
+}
+else echo "";
+
 ?>
 
 <html lang ="en">
