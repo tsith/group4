@@ -35,7 +35,7 @@ else echo "";
                 <br>
 
                 <!--<href="#" id = "AdditionalSearch" class = "button" onclick= "div_show()" id="popup">Additional Search-->
-			<div id="IndentBit"><input id="AdditionalSearch" class= "button" href="#" onclick="div_show()" id= "popup" width="5" value="Additional Search"></div>
+			<div id="IndentBit"><input id="AdditionalSearch" class= "button" href="#" onclick="div_show()" id= "popup" width="5" value="Advanced Search"></div>
 			
 			</form>
  	</div>
@@ -51,7 +51,7 @@ else echo "";
 	<!-- Contact Us Form -->
 	<form action="search.php" id="form" method="post" name="form">
 
-	<h2>Additional Search</h2>
+	<h2>Advanced Search</h2>
 	<hr>
 	<label>Author<input id="author" name="name" placeholder="e.g. McCain" size = "25" type="text"></label>
 	<label>Title<input id="title" name="title" placeholder="e.g. Networks and the internet" size = "25" type="text"></label>
