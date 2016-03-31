@@ -6,7 +6,7 @@
 	<link rel='stylesheet' type ='text/css' href= 'foundation.css'/>
 	<body>
 		<table id = "mainTable" border ="1" style = "double" width = "60%">
-
+			<caption>Search Results</caption>
 <?php
 
 include "functions.php";
@@ -54,6 +54,7 @@ closeConnection($con);
 
 ?>
 <table id = "suggestedTable" border ="2" style = "double" width = "20%">
+	<caption>Suggested Papers</caption>
 <?php
 $test = suggestedPapers($publisher);
 
