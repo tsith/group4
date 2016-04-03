@@ -7,6 +7,25 @@
   	white-space: nowrap;
  	position: relative;
  }
+ table {
+    border-collapse: collapse;
+    width: 100%;
+}
+tr{
+  font-family: Arial;
+  background-color: #9898A0;
+}
+th{
+  background-color: #232833; /* Header background colour*/
+  color: white; /* Header text colour*/
+;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
  h1{
   color: red;
  }
