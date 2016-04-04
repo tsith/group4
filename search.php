@@ -51,8 +51,12 @@ $sortSelection = setVal('sort');
 $query = chooseQuery() . sortBy($sortSelection);
 $keywords = keywordCount($title);
 
-echo $query;
-echo $keywords;
+//echo $query;
+//echo $keywords;
+
+//$keywords = keywordCount($title);
+//echo $query;
+//echo $keywords;
 
 if (!isset($_COOKIE['Query'])){
   setcookie("Query", $title);
@@ -62,6 +66,12 @@ if(isset($_COOKIE['Query'])){
 	echo "<a href='MainPage.php'>Previous Searches</a>";
 }
 
+
+
+
+
+
+
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
 
@@ -70,15 +80,16 @@ while($row = mysqli_fetch_array($r)){
 	echo "<td><br>".$row['Authors']."</td>";
 	echo "<td>".$row['Title']."</td>";
     echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
-}
+    echo "<td><br>".$row['Summary']."</td>";
 
-closeConnection($con);
+}
 
 ?>
 <table id = "suggestedTable" border ="2" style = "double" width = "20%">
 	<caption>Suggested Papers</caption>
 <?php
 $test = suggestedPapers($publisher);
+$keywordTest = retrieveKeywords();
 
 $r1 = mysqli_query($con, $test, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
@@ -88,7 +99,21 @@ while($row = mysqli_fetch_array($r1)){
 	echo "<td><br>".$row['Authors']."</td>";
 	echo "<td>".$row['Title']."</td>";
     echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
+    echo "<td><br>".$row['Summary']."</td>";
+    
+
 
 }
+
+$r2 = mysqli_query($con, $keywordTest, MYSQLI_STORE_RESULT)
+    or die("Failed to connect: " . mysqli_error($con));
+
+     while($rows1 = mysqli_fetch_array($r2)){
+        $keywordTest = explode(',', $rows1['Keywords']);
+        foreach($keywordTest as $out){
+            echo $out;
+        }
+    }
+
 ?>
 </html>
