@@ -111,7 +111,7 @@ $r2 = mysqli_query($con, $keywordTest, MYSQLI_STORE_RESULT)
      while($rows1 = mysqli_fetch_array($r2)){
         $keywordTest = explode(',', $rows1['Keywords']);
         foreach($keywordTest as $out){
-            echo $out;
+            //echo $out;
         }
     }
 
