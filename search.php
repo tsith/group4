@@ -89,7 +89,7 @@ while($row = mysqli_fetch_array($r)){
 	<caption>Suggested Papers</caption>
 <?php
 $test = suggestedPapers($publisher);
-$keywordTest = retrieveKeywords();
+//$keywordTest = retrieveKeywords();
 
 $r1 = mysqli_query($con, $test, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
@@ -98,22 +98,23 @@ while($row = mysqli_fetch_array($r1)){
 	echo "<tr>";
 	echo "<td><br>".$row['Authors']."</td>";
 	echo "<td>".$row['Title']."</td>";
-    echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
-    echo "<td><br>".$row['Summary']."</td>";
+	echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
+	echo "<td><br>".$row['Summary']."</td>";
+
     
 
 
 }
 
-$r2 = mysqli_query($con, $keywordTest, MYSQLI_STORE_RESULT)
+/*$r2 = mysqli_query($con, $keywordTest, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
 
      while($rows1 = mysqli_fetch_array($r2)){
         $keywordTest = explode(',', $rows1['Keywords']);
         foreach($keywordTest as $out){
-            //echo $out;
+            echo $out;
         }
-    }
+    }*/
 
 ?>
 </html>
