@@ -4,7 +4,29 @@
 	<meta charset = "utf-8" /><!--sets the character encoding for unicode-->
 	<link rel='stylesheet' type ='text/css' href='style.css'/><!--links to my style sheet-->
 	<link rel='stylesheet' type ='text/css' href= 'foundation.css'/>
+	<script type="text/javascript" src="javaScripts.js"></script>
+	
 	<body>
+
+<div class = 'container-1'>
+			<h3>Search for a paper</h3>
+			<form method ="post" name ="searchBox"  action ="search.php" id="searchform">
+                <input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' >
+
+                <select class="sort" name="sort" form="searchform">
+                    <option value="" disabled selected>Sort by:</option>
+                    <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
+                    <option value="sortCitationsAsc" name="sortCitationsAsc">Least Citations</option>
+                    <option value="sortYearAsc" name="sortYearAsc">Oldest</option>
+                    <option value="sortYearDesc" name="sortYearDesc">Newest</option>
+                </select>
+
+                <input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
+                <br>
+			
+			</form>
+ 	</div>
+ </div>
 		<table id = "mainTable" border ="1" style = "double" width = "60%">
 			<caption>Search Results</caption>
 <?php
