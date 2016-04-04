@@ -59,6 +59,12 @@ function setVal($value) {  // set all POST values with this function
             $value = $_POST['publisher'];
         } else $value = '';
     }
+    
+    else if (strcmp($value, 'Keywords') == 0) {
+        if (!empty($_POST['Keywords'])) {
+            $value = $_POST['Keywords'];
+        } else $value = '';
+    }
 
     //NOTE: Some form of error handling must be added to this function
     return $value;
@@ -81,7 +87,7 @@ function removeCommonWords($commonWords, $inputString) { // remove pre-defined c
 
 
 function chooseQuery(){
-    global $title, $author, $publicationYear, $citationsMin, $citationsMax;
+    global $title, $author, $publicationYear, $citationsMin, $citationsMax, $publisher, $keywords;
     $query = "";
 
     // USE MAIN SEARCH (TITLE)
@@ -215,13 +221,28 @@ function suggestedPapers($publisher){
         Order by p.Cites DESC
         LIMIT 5"; }
 
-    else{
+       else{
         $suggested = "SELECT *
         FROM Papers
-        WHERE Title LIKE '%$title%'
-        AND Keywords LIKE Keywords
+        WHERE Keywords = '$keywords'
+        OR Title LIKE '%title%'
+        Order by Cites DESC
         LIMIT 10";}
     return $suggested;
 }
 
+/*function retrieveKeywords(){
+    global $title;
+    $keywordRetrieval = "SELECT *
+    FROM Papers
+    WHERE Title = $title";
+
+
+
+
+
+    return $keywordRetrieval;}*/
+
+
 ?>
+
