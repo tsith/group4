@@ -124,16 +124,16 @@ function chooseQuery(){
         $query = "SELECT *
         FROM Papers
         WHERE keywords = '$keywords'
-        AND Title = '$title'";
+        AND Title Like '%$title%'";
     }
 
     // SEARCH BY AUTHOR, TITLE & KEYWORDS
     else if (!empty($keywords) && !empty($title) && !empty($author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin)) {
         $query = "SELECT *
         FROM Papers
-        WHERE keywords = '$keywords'
-        AND LIKE '%$title%'
-        AND Authors = '$author'";
+        WHERE Keywords LIKE '%$keywords%'
+        AND Title LIKE '%$title%'
+        AND uthors LIKE '%$author%'";
     }
 
     // SEARCH BY PUBLICATION YEAR
@@ -147,8 +147,8 @@ function chooseQuery(){
     else if (!empty($author) && !empty($title) && !empty($publicationYear) && empty($keywords) && empty($citationsMax) && empty($citationsMin)){
         $query = "SELECT *
         FROM Papers
-        WHERE LIKE '%$title%'
-        AND Authors = '$author'
+        WHERE Title LIKE '%$title%'
+        AND Authors LIKE '%$author%'
         AND Year = '$publicationYear'";
     }
 
@@ -164,7 +164,7 @@ function chooseQuery(){
         $query = "SELECT *
         FROM Papers
         WHERE Cites BETWEEN '$citationsMin' AND '$citationsMax'
-        AND Title = '$title'";
+        AND Title LIKE '%$title%'";
     }
 
     // SEARCH BY NO. OF CITATIONS, TITLE & AUTHOR
@@ -173,7 +173,7 @@ function chooseQuery(){
         FROM Papers
         WHERE Title LIKE '%$title%'
         AND (Cites BETWEEN '$citationsMin' AND '$citationsMax')
-        AND Authors = '$author'";
+        AND Authors LIKE '%$author%'";
     }
 
     else { die("Error: Failed to find correct query."); }
@@ -228,10 +228,8 @@ function suggestedPapers($publisher){
         $suggested = "SELECT *
         FROM Papers
         WHERE Keywords LIKE '%$title%'
-        OR Title LIKE '%$title%'
         Order by Cites DESC
         LIMIT 10";
-        
     }
     return $suggested;
 }
