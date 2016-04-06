@@ -208,10 +208,13 @@ function keywordCount($keywordInput){
     $frequency = array_count_values($words);
     arsort($frequency);
     print_r($frequency);
+
 }
+
 
 function suggestedPapers($publisher){
     global $title;
+    
     $suggested = "";
     if(!empty($publisher)){
         $suggested = "SELECT *
@@ -221,13 +224,15 @@ function suggestedPapers($publisher){
         Order by p.Cites DESC
         LIMIT 5"; }
 
-       else{
+    else{ 
         $suggested = "SELECT *
         FROM Papers
-        WHERE Keywords = '$keywords'
-        OR Title LIKE '%title%'
+        WHERE Keywords LIKE '%$title%'
+        OR Title LIKE '%$title%'
         Order by Cites DESC
-        LIMIT 10";}
+        LIMIT 10";
+        
+    }
     return $suggested;
 }
 
