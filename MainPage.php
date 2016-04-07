@@ -1,8 +1,12 @@
 <?php
 if (isset($_COOKIE['Query'])){
-	echo "Previous Search =  ". $_COOKIE['Query']."<BR>";
+	echo '<form method ="post" name ="searchPrevious" action="search.php" id="previousSearch">
+	<input type="hidden" id="querySent" name="querySent" value='. $_COOKIE["Query"].'>
+	<input type="submit" value="Previous Searches"></form><br>';
+	echo "Previous Search = " .$_POST['sendTitle'];
 }
 else echo "";
+
 
 ?>
 
