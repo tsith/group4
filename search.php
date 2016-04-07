@@ -59,13 +59,18 @@ $keywords = keywordCount($title);
 //echo $keywords;
 
 if (!isset($_COOKIE['Query'])){
-  setcookie("Query", $title);
+  setcookie("Query", $query);
+
 }
 if(isset($_COOKIE['Query'])){
-	setcookie("Query", $title);
-	echo "<a href='MainPage.php'>Previous Searches</a>";
+	setcookie("Query", $query);
 }
 
+
+$sentTitle = $title;
+echo '<form method ="post" name ="searchPrevious" action="MainPage.php" id="previousSearch">
+<input type="hidden" id="sendTitle" name="sendTitle" value="'.$sentTitle.'">
+<input type="submit" value="Previous Search"></form>';
 
 
 
