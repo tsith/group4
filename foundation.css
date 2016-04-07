@@ -1164,6 +1164,7 @@ button, .button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  border-radius:5px;
   padding: 1rem 2rem 1.0625rem 2rem;
   font-size: 1rem;
   background-color: #343d46;
