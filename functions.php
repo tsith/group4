@@ -64,6 +64,13 @@ function setVal($value) {  // set all POST values with this function
         if (!empty($_POST['Keywords'])) {
             $value = $_POST['Keywords'];
         } else $value = '';
+        
+    }
+    
+    else if (strcmp($value, 'noOfResults') == 0) {
+        if (!empty($_POST['noOfResults'])) {
+            $value = $_POST['noOfResults'];
+        } else $value = '';
     }
 
     //NOTE: Some form of error handling must be added to this function
@@ -232,6 +239,30 @@ function suggestedPapers($publisher){
         LIMIT 10";
     }
     return $suggested;
+}
+
+
+function maxNoOfPapers($maxNo) {
+    $limit = "";
+    
+    if ($maxNo == 'show10') {
+        $limit = " LIMIT 10";
+    }
+    
+    else if ($maxNo == 'show50') {
+        $limit = " LIMIT 50";
+    }
+    
+    else if ($maxNo == 'show100') {
+        $limit = " LIMIT 100";
+    }
+    
+    else if ($maxNo == 'show250') {
+       $limit = " LIMIT 250";
+    }
+   
+   return $limit;
+    
 }
 
 /*function retrieveKeywords(){
