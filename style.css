@@ -10,8 +10,8 @@
 
  .titled{
   position:absolute;
-  left:10%;
-  margin-top:5%;
+  left:30%;
+  margin-top:10%;
   width: 300px;
   white-space: nowrap;
   position: relative;
@@ -21,6 +21,7 @@
   position:relative;
   left:10%;
   margin-top:5%;
+  white-space: nowrap;
  }
 
  table {
@@ -152,6 +153,7 @@ font-family:'Raleway',sans-serif
 #xbutton{float:right; display:block;border-radius:5px;position:fixed;top:12%;right:12%;}
 
 #IndentBit{text-indent:9.7em;}
+#PaperIndent{text-indent:24em;}
 
 #sortBox{width:10%;}
 
