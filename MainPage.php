@@ -52,7 +52,7 @@ else echo "";
 
 <div id="abc" class="callout" visibility="hidden" data-closable>
 <!-- Popup Div Starts Here -->
-	<button class="close-button" aria-label="Dismiss alert" type="button" data-close onclick="div_hide()">
+	<button  id="xbutton" class="close-button" aria-label="Dismiss alert" type="button" data-close onclick="div_hide()">
          <span aria-hidden="true">&times;</span>
     </button>
 <div id="popupContact">
