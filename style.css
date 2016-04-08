@@ -94,7 +94,6 @@ body{
   -ms-transition: all .55s ease;
   -o-transition: all .55s ease;
   transition: all .55s ease;
-  border-radius:5px;
 }
 
 #abc{
@@ -117,6 +116,10 @@ background-color:#FFFFFF;
     margin-left: 10px;
 }
 
+.noOfResults {
+    max-width: 55%;
+    margin-left: 10px;
+}
 
 div#popupContact {
 position:absolute;
@@ -130,10 +133,8 @@ font-family:'Raleway',sans-serif
 
 #popup{text-decoration:underline; cursor:pointer;}
 
-#xbutton{float:right; display:block;border-radius:5px;position:fixed;top:12%;right:12%;}
+#xbutton{float:right; display:block; position:relative;}
 
 #IndentBit{text-indent:9.7em;}
 
 #sortBox{width:10%;}
-
-#searchbutton{border-radius:5px;}
