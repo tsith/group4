@@ -67,8 +67,7 @@ $sortSelection = setVal('sort');
 
 // GET MAX PAPERS TO SHOW
 $maxPapers = setVal('noOfResults');
-echo $maxPapers . " ";
-echo $sortSelection;
+
 
 // FUNCTION TO CHOOSE CORRECT QUERY, SORT IF NECESSARY, LIMIT IF NECESSARY
 $query = chooseQuery() . sortBy($sortSelection) . maxNoOfPapers($maxPapers);
