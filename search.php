@@ -20,6 +20,14 @@
                     <option value="sortYearAsc" name="sortYearAsc">Oldest</option>
                     <option value="sortYearDesc" name="sortYearDesc">Newest</option>
                 </select>
+                
+                <select class="noOfResults" name="noOfResults" form="searchform">
+                    <option value="" disabled selected>No. of Results to Show:</option>
+                    <option value="show10" name="show10">10</option>
+                    <option value="show50" name="show50">50</option>
+                    <option value="show100" name="show100">100</option>
+                    <option value="show250" name="show250">250</option>
+                </select>
 
                 <input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
                 <br>
@@ -27,8 +35,18 @@
 			</form>
  	</div>
  </div>
-		<table id = "mainTable" border ="1" style = "double" width = "60%">
-			<caption>Search Results</caption>
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+<table id = "mainTable" border ="1" style = "double" width = "60%">
+    <caption>Search Results</caption>
+                        
+                        
 <?php
 
 include "functions.php";
@@ -47,34 +65,26 @@ $citationsMax = removeCommonWords($commonWords, setVal('citationsMax'));
 // GET SORT SELECTION VALUES
 $sortSelection = setVal('sort');
 
-// FUNCTION TO CHOOSE CORRECT QUERY AND SORT IF NECESSARY
-$query = chooseQuery() . sortBy($sortSelection);
+// GET MAX PAPERS TO SHOW
+$maxPapers = setVal('noOfResults');
+echo $maxPapers . " ";
+echo $sortSelection;
+
+// FUNCTION TO CHOOSE CORRECT QUERY, SORT IF NECESSARY, LIMIT IF NECESSARY
+$query = chooseQuery() . sortBy($sortSelection) . maxNoOfPapers($maxPapers);
 $keywords = keywordCount($title);
 
-//echo $query;
-//echo $keywords;
 
-//$keywords = keywordCount($title);
-//echo $query;
-//echo $keywords;
 
 if (!isset($_COOKIE['Query'])){
-  setcookie("Query", $query);
-
+  setcookie("Query", $title);
 }
 if(isset($_COOKIE['Query'])){
-	setcookie("Query", $query);
+	setcookie("Query", $title);
+	echo "<a href='MainPage.php'>Previous Searches</a>";
 }
 
-
-$sentTitle = $title;
-echo '<form method ="post" name ="searchPrevious" action="MainPage.php" id="previousSearch">
-<input type="hidden" id="sendTitle" name="sendTitle" value="'.$sentTitle.'">
-<input type="submit" value="Previous Search"></form>';
-
-
-
-
+echo "<br>" . $query;
 
 
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
