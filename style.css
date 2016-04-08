@@ -1,12 +1,28 @@
 .area{
 	position:absolute;
-	left:40%;
+	left:35%;
 	margin-top:10%;
 	width: 300px;
   	vertical-align: middle;
   	white-space: nowrap;
  	position: relative;
  }
+
+ .titled{
+  position:absolute;
+  left:10%;
+  margin-top:5%;
+  width: 300px;
+  white-space: nowrap;
+  position: relative;
+ }
+
+ .contained{
+  position:relative;
+  left:10%;
+  margin-top:5%;
+ }
+
  table {
     border-collapse: collapse;
     width: 100%;
@@ -140,3 +156,4 @@ font-family:'Raleway',sans-serif
 #sortBox{width:10%;}
 
 #searchbutton{border-radius:5px;}
+
