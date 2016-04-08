@@ -1,12 +1,8 @@
 <?php
 if (isset($_COOKIE['Query'])){
-	echo '<form method ="post" name ="searchPrevious" action="search.php" id="previousSearch">
-	<input type="hidden" id="querySent" name="querySent" value='. $_COOKIE["Query"].'>
-	<input type="submit" value="Previous Searches"></form><br>';
-	echo "Previous Search = " .$_POST['sendTitle'];
+	echo "Previous Search =  ". $_COOKIE['Query']."<BR>";
 }
 else echo "";
-
 
 ?>
 
@@ -34,6 +30,14 @@ else echo "";
                     <option value="sortYearAsc" name="sortYearAsc">Oldest</option>
                     <option value="sortYearDesc" name="sortYearDesc">Newest</option>
                 </select>
+                
+                <select class="noOfResults" name="noOfResults" form="searchform">
+                    <option value="" disabled selected>No. of Results to Show:</option>
+                    <option value="show10" name="show10">10</option>
+                    <option value="show50" name="show50">50</option>
+                    <option value="show100" name="show100">100</option>
+                    <option value="show250" name="show250">250</option>
+                </select>
 
                 <input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
                 <br>
@@ -48,7 +52,7 @@ else echo "";
 
 <div id="abc" class="callout" visibility="hidden" data-closable>
 <!-- Popup Div Starts Here -->
-	<button  id= "xbutton" class="close-button" aria-label="Dismiss alert" type="button" data-close onclick="div_hide()">
+	<button class="close-button" aria-label="Dismiss alert" type="button" data-close onclick="div_hide()">
          <span aria-hidden="true">&times;</span>
     </button>
 <div id="popupContact">
@@ -71,6 +75,14 @@ else echo "";
             <option value="sortCitationsAsc" name="sortCitationsAsc">Least Citations</option>
             <option value="sortYearAsc" name="sortYearAsc">Oldest</option>
             <option value="sortYearDesc" name="sortYearDesc">Newest</option>
+        </select>
+        
+        <select class="noOfResults" name="noOfResults" form="form">
+            <option value="" disabled selected>No. of Results to Show:</option>
+            <option value="show10" name="show10">10</option>
+            <option value="show50" name="show50">50</option>
+            <option value="show100" name="show100">100</option>
+            <option value="show250" name="show250">250</option>
         </select>
 
         
