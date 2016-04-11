@@ -3,8 +3,8 @@
 	<title>Group 4 SPMIS</title>
 	<meta charset = "utf-8" /><!--sets the character encoding for unicode-->
 	<link rel='stylesheet' type ='text/css' href='style.css'/><!--links to my style sheet-->
-	<link rel='stylesheet' type ='text/css' href= 'foundation.css'/>
-	<script type="text/javascript" src="javaScripts.js"></script>
+	<link rel='stylesheet' type ='text/css' href= 'foundation.css'/><!--links to my style sheet-->
+	<script type="text/javascript" src="javaScripts.js"></script><!--Links to the javascript file which carries out the error checking-->
 	
 	<body>
 
@@ -28,23 +28,27 @@
                     <option value="show100" name="show100">100</option>
                     <option value="show250" name="show250">250</option>
                 </select>
-
+                <!--when the search button is clicked it runs the validation in the javaScript file that ensures the input entered is correct-->
                 <input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
                 <br>
 			
 			</form>
  	</div>
  </div>
-  
+
 <table id = "mainTable" border ="1" style = "double" width = "60%">
     <caption>Search Results</caption>
                         
                         
 <?php
+//ADDS THE FUNCTIONS.PHP FILE SO THE METHODS CAN BE ACCESSED 
 
 include "functions.php";
+
+//CONNECTS TO THE DATABASE USING THE CORRECT CREDENTIALS
 $con = connect('csmysql.cs.cf.ac.uk', 'group4.2015', 'A3bb6@4kmna', 'group4_2015');
 
+//THE COMMON WORDS ARE SET HERE SO THAT WE CAN REMOVE THEM WHEN SETTING THE VALUE OF THE PASSED INFORMATION
 $commonWords = 'and,the';
 
 // GET USER INPUT VALUES & REMOVE COMMON WORDS
@@ -63,13 +67,14 @@ $maxPapers = setVal('noOfResults');
 
 // FUNCTION TO CHOOSE CORRECT QUERY, SORT IF NECESSARY, LIMIT IF NECESSARY
 $query = chooseQuery() . sortBy($sortSelection) . maxNoOfPapers($maxPapers);
-$keywords = keywordCount($title);
+//$keywords = keywordCount($title);
 
 
-// CHECK FOR PREVIOUS SEARCH
+//SETS THE SEARCH TERM ENTERED (TITLE) TO BE THE COOKIE VALUE
 if (!isset($_COOKIE['Query'])){
   setcookie("Query", $title);
 }
+//IF THE COOKIE IS SET THEN MAKE A LINK TO THE MAIN PAGE FOR THE USER TO SEE THEIR PREVIOUS SEARCH TERMS
 if(isset($_COOKIE['Query'])){
 	setcookie("Query", $title);
 	echo "<a href='MainPage.php'>Previous Searches</a>";
@@ -77,6 +82,10 @@ if(isset($_COOKIE['Query'])){
 
 // DEVELOPMEPER NOTE: SHOW CURRENT QUERY -> TO BE REMOVED IN FINAL VERSION.
 echo "<br>" . $query;
+
+//CREATES A TABLE FOR THE RESULTS OF THE SEARCH TERMS ENTERED
+//ECHOING OUT THE AUTHORS, TITLE, ARTICLE URL AND SUMMARY
+//IF CANNOT CONNECT TO THE DATABASE THEN DISPLAY A MYSQLI ERROR
 
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
@@ -94,8 +103,14 @@ while($row = mysqli_fetch_array($r)){
 <table id = "suggestedTable" border ="2" style = "double" width = "20%">
 	<caption>Suggested Papers</caption>
 <?php
+//CALLS THE SUGGESTEDPAPERS() FUNCTION FROM THE FUNCTIONS.PHP FILE
+
 $test = suggestedPapers($publisher);
 //$keywordTest = retrieveKeywords();
+
+//CREATES A TABLE FOR THE RESULTS OF SUGGESTED PAPERS
+//ECHOING OUT THE AUTHORS, TITLE, ARTICLE URL AND SUMMARY
+//IF CANNOT CONNECT TO THE DATABASE THEN DISPLAY A MYSQLI ERROR
 
 $r1 = mysqli_query($con, $test, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
@@ -106,17 +121,9 @@ while($row = mysqli_fetch_array($r1)){
 	echo "<td>".$row['Title']."</td>";
 	echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
 	echo "<td><br>".$row['Summary']."</td>";
+
+
 }
-
-/*$r2 = mysqli_query($con, $keywordTest, MYSQLI_STORE_RESULT)
-    or die("Failed to connect: " . mysqli_error($con));
-
-     while($rows1 = mysqli_fetch_array($r2)){
-        $keywordTest = explode(',', $rows1['Keywords']);
-        foreach($keywordTest as $out){
-            echo $out;
-        }
-    }*/
 
 ?>
 </html>
