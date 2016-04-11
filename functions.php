@@ -286,7 +286,7 @@ function suggestedPapers($publisher){
             LIMIT 10";
         }
         return $suggested;
-    
+    }
     else echo "Error: " . $publisher . " is not of type String. </br>";
 }
 
