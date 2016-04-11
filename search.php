@@ -35,14 +35,7 @@
 			</form>
  	</div>
  </div>
- 
- 
- 
-
- 
- 
- 
- 
+  
 <table id = "mainTable" border ="1" style = "double" width = "60%">
     <caption>Search Results</caption>
                         
@@ -57,7 +50,7 @@ $commonWords = 'and,the';
 // GET USER INPUT VALUES & REMOVE COMMON WORDS
 $title = removeCommonWords($commonWords, setVal('title'));
 $author = removeCommonWords($commonWords, setVal('author'));
-$publicationYear = removeCommonWords($commonWords, setVal('year'));
+$publicationYear = removeCommonWords($commonWords, setVal('Year'));
 $publisher = removeCommonWords($commonWords, setVal('publisher'));
 $citationsMin = removeCommonWords($commonWords, setVal('citationsMin'));
 $citationsMax = removeCommonWords($commonWords, setVal('citationsMax'));
@@ -68,13 +61,12 @@ $sortSelection = setVal('sort');
 // GET MAX PAPERS TO SHOW
 $maxPapers = setVal('noOfResults');
 
-
 // FUNCTION TO CHOOSE CORRECT QUERY, SORT IF NECESSARY, LIMIT IF NECESSARY
 $query = chooseQuery() . sortBy($sortSelection) . maxNoOfPapers($maxPapers);
 $keywords = keywordCount($title);
 
 
-
+// CHECK FOR PREVIOUS SEARCH
 if (!isset($_COOKIE['Query'])){
   setcookie("Query", $title);
 }
@@ -83,8 +75,8 @@ if(isset($_COOKIE['Query'])){
 	echo "<a href='MainPage.php'>Previous Searches</a>";
 }
 
+// DEVELOPMEPER NOTE: SHOW CURRENT QUERY -> TO BE REMOVED IN FINAL VERSION.
 echo "<br>" . $query;
-
 
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
@@ -114,10 +106,6 @@ while($row = mysqli_fetch_array($r1)){
 	echo "<td>".$row['Title']."</td>";
 	echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
 	echo "<td><br>".$row['Summary']."</td>";
-
-    
-
-
 }
 
 /*$r2 = mysqli_query($con, $keywordTest, MYSQLI_STORE_RESULT)
