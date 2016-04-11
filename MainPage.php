@@ -46,7 +46,7 @@ else echo "";
 			<div id="IndentBit"><input id="AdditionalSearch" class= "button" href="#" onclick="div_show()" id= "popup" width="5" value="Advanced Search"></div>
 			
 			</form>
- 	</div>
+ 	</div>Springer
 </div>
 
 
@@ -64,7 +64,7 @@ else echo "";
 	<label>Author<input id="author" name="name" placeholder="e.g. McCain" size = "25" type="text"></label>
 	<label>Title<input id="title" name="title" placeholder="e.g. Networks and the internet" size = "25" type="text"></label>
 	<label>Keywords<input id="keywords" name="keywords" placeholder="e.g. Networks, router" size = "25" type="text"></label>
-	<label>Published in<input id="publisher" name="publisher" placeholder="e.g. Computer Science" size = "25" type="text"></label>
+	<label>Publisher<input id="publisher" name="publisher" placeholder="e.g. Springer" size = "25" type="text"></label>
 	<label>Year Published<input id="Year" name="Year" placeholder="e.g. 1996" size ="4" maxlength = "4" type="text"></label></label>
 	<label>No. Of Citations (min)<input id="citationsMin" name="citationsMin" placeholder="e.g. 10" size ="4" maxlength = "4" type="text"></label></label>
 	<label>No. Of Citations (max)<input id="citationsMax" name="citationsMax" placeholder="e.g. 120" size ="4" maxlength = "4" type="text"></label></label>
