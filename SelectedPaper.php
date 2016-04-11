@@ -10,9 +10,12 @@
 <div class="titled">
 <h1>Selected Paper</h1>
 	<div class = 'contained'>
-		<h2>Paper Title</h2>
-		<h3>Author</h3>
-		<h4>Publisher</h4>
+		<h2><?php echo $_POST['sendTitle'];?></h2>
+		
+		<h3><?php echo $_POST['sendAuthor'];?></h3>
+
+		<h4><?php echo $_POST['sendPublisher'];?></h4>
+
 		<div id="PaperIndent"><button class="button">Go to Paper</button></div>
 	</div>
 </div>
