@@ -30,7 +30,7 @@ function setVal($value) {  // set all POST values with this function
         } else $value = '';
     }
 
-    else if (strcmp($value, 'publicationYear') == 0) {
+    else if (strcmp($value, 'Year') == 0) {
         if (!empty($_POST['Year'])) {
             $value = $_POST['Year'];
         } else $value = '';
@@ -72,24 +72,34 @@ function setVal($value) {  // set all POST values with this function
             $value = $_POST['noOfResults'];
         } else $value = '';
     }
+    
+    else echo "Error: the setValue function failed to find required POST value: " . $value . "</br>";
 
-    //NOTE: Some form of error handling must be added to this function
     return $value;
 }
 
 function removeCommonWords($commonWords, $inputString) { // remove pre-defined common words
-    $commonWords = str_replace(' ', '', $commonWords); // removes whitespace from commonWords var
-    $commonWords = explode(",", $commonWords);
-    $inputString = explode(" " , $inputString);
-
-    foreach($inputString as $value){
-        if(!in_array($value, $commonWords)){
-            $outputString[] = $value;
-        }
-
+    if (!is_string($inputString)) {
+        echo "Error: " . $inputString . " is not of type String. </br>";
     }
-    $outputString = implode(" ", $outputString);
-    return $outputString;
+    
+    else if (!is_string($commonWords)) {
+       echo "Error: " . $commonWords . " is not of type String. </br>";
+    }
+    
+    else {
+        $commonWords = str_replace(' ', '', $commonWords); // removes whitespace from commonWords var
+        $commonWords = explode(",", $commonWords);
+        $inputString = explode(" " , $inputString);
+        
+        foreach($inputString as $value){
+            if(!in_array($value, $commonWords)){
+                $outputString[] = $value;
+            }
+        }
+        $outputString = implode(" ", $outputString);
+        return $outputString;
+    }
 }
 
 
@@ -98,36 +108,36 @@ function chooseQuery(){
     $query = "";
 
     // USE MAIN SEARCH (TITLE)
-    if (!empty($title) && empty($author)){
+    if (!empty($title) && empty($author) && empty($publicationYear) && empty($citationsMin) && empty($citationsMax) && empty($publisher) && empty($keywords)){
         $query = "SELECT *
         FROM Papers
         WHERE Title LIKE '%$title%'";
     }
 
     // SEARCH BY AUTHOR
-    else if (!empty($author) && empty ($title)){
+    else if (!empty($author)& empty($title) && empty($publicationYear) && empty($citationsMin) && empty($citationsMax) and empty($publisher) and empty($keywords)){
         $query = "SELECT *
         FROM Papers
         WHERE Authors LIKE '%$author%'";
     }
 
     // SEARCH BY AUTHOR AND TITLE
-    else if (!empty($author) && !empty($title)){
+    else if (!empty($author) && !empty($title) && empty($publicationYear) && empty($citationsMin) && empty($citationsMax) and empty($publisher) and empty($keywords)){
         $query = "SELECT *
         FROM Papers
         WHERE Title LIKE '%$title%'
         AND Authors LIKE '%$author%'";
     }
 
-    // SEARCH BY KEYWORDS  (NOTE: NOT SU RE IF KEYWORDS BEING INCLUDED? NOT IN DATABASE DIAGRAM)
-    else if (!empty($keywords) && empty($author) && empty($title) && empty($publicationYear) && empty ($citationsMax) && empty($citationsMin)) {
+    // SEARCH BY KEYWORDS  (NOTE: NOT SURE IF KEYWORDS BEING INCLUDED? NOT IN DATABASE DIAGRAM)
+    else if (!empty($keywords) && empty($author) && empty($title) && empty($publicationYear) && empty ($citationsMax) && empty($citationsMin) and empty($publisher)) {
         $query = "SELECT *
         FROM Papers
         WHERE keywords = '$keywords'";
     }
 
     // SEARCH BY TITLE & KEYWORDS
-    else if (!empty($keywords) && !empty($title) && empty($author) && empty($publicationYear) && empty($citationsMin) && empty($citationsMax)) {
+    else if (!empty($keywords) && !empty($title) && empty($author) && empty($publicationYear) && empty($citationsMin) && empty($citationsMax) and empty($publisher)) {
         $query = "SELECT *
         FROM Papers
         WHERE keywords = '$keywords'
@@ -135,7 +145,7 @@ function chooseQuery(){
     }
 
     // SEARCH BY AUTHOR, TITLE & KEYWORDS
-    else if (!empty($keywords) && !empty($title) && !empty($author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin)) {
+    else if (!empty($keywords) && !empty($title) && !empty($author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin) and empty($publisher)) {
         $query = "SELECT *
         FROM Papers
         WHERE Keywords LIKE '%$keywords%'
@@ -144,14 +154,14 @@ function chooseQuery(){
     }
 
     // SEARCH BY PUBLICATION YEAR
-    else if (!empty($publicationYear) && empty($title) && empty($author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin)) {
+    else if (!empty($publicationYear) && empty($title) && empty($author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin) and empty($publisher)) {
         $query = "SELECT *
         FROM Papers
         WHERE Year = '$publicationYear'";
     }
 
     // SEARCH BY AUTHOR, TITLE & PUBLICATION YEAR
-    else if (!empty($author) && !empty($title) && !empty($publicationYear) && empty($keywords) && empty($citationsMax) && empty($citationsMin)){
+    else if (!empty($author) && !empty($title) && !empty($publicationYear) && empty($keywords) && empty($citationsMax) && empty($citationsMin) and empty($publisher)){
         $query = "SELECT *
         FROM Papers
         WHERE Title LIKE '%$title%'
@@ -160,14 +170,14 @@ function chooseQuery(){
     }
 
     //SEARCH BY NO. OF CITATIONS
-    else if (!empty($citationsMin) && !empty($citationsMax) && empty($title) && empty($author) and empty($keywords) and empty($publicationYear)) {
+    else if (!empty($citationsMin) && !empty($citationsMax) && empty($title) && empty($author) and empty($keywords) and empty($publicationYear) and empty($publisher)) {
         $query = "SELECT *
         FROM Papers
         WHERE Cites BETWEEN '$citationsMin' AND '$citationsMax'";
     }
 
     // SEARCH BY NO. OF CITATIONS & TITLE
-    else if (!empty($title) && !empty($citationsMin) && !empty($citationsMax) && empty($author) and empty($keywords) and empty($publicationYear)) {
+    else if (!empty($title) && !empty($citationsMin) && !empty($citationsMax) && empty($author) and empty($keywords) and empty($publicationYear) and empty($publisher)) {
         $query = "SELECT *
         FROM Papers
         WHERE Cites BETWEEN '$citationsMin' AND '$citationsMax'
@@ -175,14 +185,38 @@ function chooseQuery(){
     }
 
     // SEARCH BY NO. OF CITATIONS, TITLE & AUTHOR
-    else if (!empty($title) && !empty($author) && !empty($citationsMin) && !empty($citationsMax) and empty($keywords) and empty($publicationYear)) {
+    else if (!empty($title) && !empty($author) && !empty($citationsMin) && !empty($citationsMax) and empty($keywords) and empty($publicationYear) and empty($publisher)) {
         $query = "SELECT *
         FROM Papers
         WHERE Title LIKE '%$title%'
         AND (Cites BETWEEN '$citationsMin' AND '$citationsMax')
         AND Authors LIKE '%$author%'";
     }
+    
+    // SEARCH BY PUBLISHER
+    else if (!empty($publisher) && empty($title) && empty($author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin) && empty($publicationYear)) {
+        $query = "SELECT * "
+                . "FROM Papers "
+                . "WHERE Publisher LIKE '%$publisher%'";
+    }
 
+    // SEARCH BY PUBLISHER & TITLE
+    else if (!empty($publisher) && !empty($title) && empty($author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin) && empty($publicationYear)) {
+        $query = "SELECT * "
+                . "FROM Papers "
+                . "WHERE Publisher LIKE '%$publisher%' "
+                . "AND Title LIKE '%$title%'";
+    }
+    
+    // SEARCH BY PUBLISHER, TITLE & AUTHOR
+    else if (!empty($publisher) && !empty($title) && empty(!$author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin) && empty($publicationYear)) {
+        $query = "SELECT * "
+                . "FROM Papers "
+                . "WHERE Publisher LIKE '%$publisher%' "
+                . "AND Title LIKE '%$title%' "
+                . "AND Author LIKE '%$author%'";
+    }
+    
     else { die("Error: Failed to find correct query."); }
 
     return $query;
@@ -206,7 +240,7 @@ function sortBy($sortSelection) {
             $sortBy = " ORDER BY Cites DESC";
         }
     }
-
+    
     return $sortBy;
 }
 function keywordCount($keywordInput){
@@ -222,23 +256,28 @@ function keywordCount($keywordInput){
 function suggestedPapers($publisher){
     global $title;
     
-    $suggested = "";
-    if(!empty($publisher)){
-        $suggested = "SELECT *
-        FROM Papers p, suggestedPapers sp
-        WHERE sp.Publisher = '$publisher'
-        AND p.title = sp.title
-        Order by p.Cites DESC
-        LIMIT 5"; }
+    if (is_string($publisher)) {
+    
+        $suggested = "";
+        if(!empty($publisher)){
+            $suggested = "SELECT *
+            FROM Papers p, suggestedPapers sp
+            WHERE sp.Publisher = '$publisher'
+            AND p.title = sp.title
+            Order by p.Cites DESC
+            LIMIT 5"; }
 
-    else{ 
-        $suggested = "SELECT *
-        FROM Papers
-        WHERE Keywords LIKE '%$title%'
-        Order by Cites DESC
-        LIMIT 10";
+        else{ 
+            $suggested = "SELECT *
+            FROM Papers
+            WHERE Keywords LIKE '%$title%'
+            Order by Cites DESC
+            LIMIT 10";
+        }
+        return $suggested;
     }
-    return $suggested;
+    
+    else echo "Error: " . $publisher . " is not of type String. </br>";
 }
 
 
@@ -260,6 +299,8 @@ function maxNoOfPapers($maxNo) {
     else if ($maxNo == 'show250') {
        $limit = " LIMIT 250";
     }
+    
+   else echo "Error: " . $maxNo . " is not a valid option to sort by. </br>";
    
    return $limit;
     
@@ -270,10 +311,6 @@ function maxNoOfPapers($maxNo) {
     $keywordRetrieval = "SELECT *
     FROM Papers
     WHERE Title = $title";
-
-
-
-
 
     return $keywordRetrieval;}*/
 
