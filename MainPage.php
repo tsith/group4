@@ -1,3 +1,5 @@
+<!--THIS PHP SECTION PRINTS OUT THE COOKIE SET FROM THE SEARCH TERMS AND ECHOS IT TO THE SCREEN
+    IF NO COOKIE IS SET THEN NOTHING IS ECHOED OUT-->
 <?php
 if (isset($_COOKIE['Query'])){
 	echo "Previous Search =  ". $_COOKIE['Query']."<BR>";
@@ -23,6 +25,7 @@ else echo "";
 			<form method ="post" name ="searchBox"  action ="search.php" id="searchform">
                 <input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' autofocus >
 
+                <!--SETS THE COMBO BOX FOR SORTING THE PAPERS WHEN RETURNED, WHETHER SORTED BY NUMBER OF CITATIONS OR YEAR PUBLISHED-->
                 <select class="sort" name="sort" form="searchform">
                     <option value="" disabled selected>Sort by:</option>
                     <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
@@ -31,6 +34,7 @@ else echo "";
                     <option value="sortYearDesc" name="sortYearDesc">Newest</option>
                 </select>
                 
+                <!--SETS THE COMBO BOX FOR LIMITING THE AMOUNT OF PAPERS YOU WISH TO DISPLAY-->
                 <select class="noOfResults" name="noOfResults" form="searchform">
                     <option value="" disabled selected>No. of Results to Show:</option>
                     <option value="show10" name="show10">10</option>
@@ -39,14 +43,15 @@ else echo "";
                     <option value="show250" name="show250">250</option>
                 </select>
 
+                <!--THE SEARCH BUTTON WHEN CLICKED CALLS THE javaScript.js FILE TO CHECK THE INPUT ENTERED MATCHES THE VALIDATION -->
                 <input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
                 <br>
 
                 <!--<href="#" id = "AdditionalSearch" class = "button" onclick= "div_show()" id="popup">Additional Search-->
 			<div id="IndentBit"><input id="AdditionalSearch" class= "button" href="#" onclick="div_show()" id= "popup" width="5" value="Advanced Search"></div>
-			
+			<!--DIPLAYS THE POPUP BOX WITH THE ADVANCED SEARCH OPTIONS ON IT-->
 			</form>
- 	</div>Springer
+ 	</div>
 </div>
 
 
@@ -69,6 +74,7 @@ else echo "";
 	<label>No. Of Citations (min)<input id="citationsMin" name="citationsMin" placeholder="e.g. 10" size ="4" maxlength = "4" type="text"></label></label>
 	<label>No. Of Citations (max)<input id="citationsMax" name="citationsMax" placeholder="e.g. 120" size ="4" maxlength = "4" type="text"></label></label>
 
+        <!--SETS THE COMBO BOX FOR SORTING THE PAPERS WHEN RETURNED, WHETHER SORTED BY NUMBER OF CITATIONS OR YEAR PUBLISHED-->
         <select class="sort" name="sort" form="form">
             <option value="" disabled selected>Sort by:</option>
             <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
@@ -77,6 +83,7 @@ else echo "";
             <option value="sortYearDesc" name="sortYearDesc">Newest</option>
         </select>
         
+        <!--SETS THE COMBO BOX FOR LIMITING THE AMOUNT OF PAPERS YOU WISH TO DISPLAY-->
         <select class="noOfResults" name="noOfResults" form="form">
             <option value="" disabled selected>No. of Results to Show:</option>
             <option value="show10" name="show10">10</option>
@@ -98,5 +105,4 @@ else echo "";
 
 </body>
 
-<!--Cites, Authors, Title, Year, Source, Publisher, ArticleURL, CitesURL, GSRank, QueryDate, Type -->
 </html>
