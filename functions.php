@@ -300,7 +300,7 @@ function maxNoOfPapers($maxNo) {
        $limit = " LIMIT 250";
     }
     
-   else echo "Error: " . $maxNo . " is not a valid option to sort by. </br>";
+   else if (!empty($maxNo)) { echo "Error: " . $maxNo . " is not a valid option to sort by. </br>"; }
    
    return $limit;
     
