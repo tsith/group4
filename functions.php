@@ -115,7 +115,7 @@ function chooseQuery(){
     }
 
     // SEARCH BY AUTHOR
-    else if (!empty($author)& empty($title) && empty($publicationYear) && empty($citationsMin) && empty($citationsMax) and empty($publisher) and empty($keywords)){
+    else if (!empty($author) && empty($title) && empty($publicationYear) && empty($citationsMin) && empty($citationsMax) and empty($publisher) and empty($keywords)){
         $query = "SELECT *
         FROM Papers
         WHERE Authors LIKE '%$author%'";
