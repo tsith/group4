@@ -96,6 +96,12 @@ while($row = mysqli_fetch_array($r)){
 	echo "<td>".$row['Title']."</td>";
     echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
     echo "<td><br>".$row['Summary']."</td>";
+    echo "<form method ='post' name ='moreInfo' action='selectedPaper.php' id='moreInfo'>
+    <td><input type='submit'  class='button' value='More Info'></td>
+    <input type='hidden' id='sendTitle' name='sendTitle' value='".$row['Title']."'>
+    <input type='hidden' id='sendAuthor' name='sendAuthor' value='".$row['Authors']."'>
+    <input type='hidden' id='sendPublisher' name='sendPublisher' value='".$row['Publisher']."'>
+    <input type='hidden' id='sendSummary' name='sendSummary' value='".$row['Summary']."'></form>";
 
 }
 
@@ -121,6 +127,12 @@ while($row = mysqli_fetch_array($r1)){
 	echo "<td>".$row['Title']."</td>";
 	echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
 	echo "<td><br>".$row['Summary']."</td>";
+    echo "<form method ='post' name ='moreInfo' action='selectedPaper.php' id='moreInfo'>
+    <td><input type='submit'  class='button' value='More Info'></td>
+    <input type='hidden' id='sendTitle' name='sendTitle' value='".$row['Title']."'>
+    <input type='hidden' id='sendAuthor' name='sendAuthor' value='".$row['Authors']."'>
+    <input type='hidden' id='sendPublisher' name='sendPublisher' value='".$row['Publisher']."'>
+    <input type='hidden' id='sendSummary' name='sendSummary' value='".$row['Summary']."'></form>";
 
 
 }
