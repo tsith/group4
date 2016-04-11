@@ -1,4 +1,6 @@
 <?php
+//THIS FUNCTION CONNECTS TO THE DATABASE. THE VARIABLES ARE PASSED THROUGH AND THE USERNAME/PASSWORD ARE ENTERED ON THE SEARCH.PHP FILE
+//IF THERE IS A PROBLEM CONNECTING TO THE DATABASE THEN AN ERROR MESSAGE IS DISPLAYED
 
 function connect($host, $user, $pass, $database){ // connect to database
 
@@ -9,6 +11,8 @@ function connect($host, $user, $pass, $database){ // connect to database
     else { return mysqli_connect($host, $user, $pass, $database); }
 }
 
+//THIS FUNCTION MAKES SURE THAT THE DATABASE CONNECTION IS CLOSED AFTER IT HAS BEEN USED
+//IF NOT IT PRODUCES AN ERROR SAYING IT FAILED TO CLOSE THE CONNECTION
 
 function closeConnection($connection) { // closes & checks connection is closed
     $closeCon = mysqli_close($connection);
@@ -16,6 +20,7 @@ function closeConnection($connection) { // closes & checks connection is closed
     if ($closeCon == 0) { echo "Failed to close database connection."; }
 }
 
+//THIS FUNCTION SETS ALL THE VALUES POSTED THROUGH THE WEBSITE WHEN A USER ENTERS A SEARCH TERM OR QUERY
 function setVal($value) {  // set all POST values with this function
 
     if (strcmp($value, 'title') == 0) {
@@ -72,12 +77,12 @@ function setVal($value) {  // set all POST values with this function
             $value = $_POST['noOfResults'];
         } else $value = '';
     }
-    
     else echo "Error: the setValue function failed to find required POST value: " . $value . "</br>";
 
     return $value;
 }
 
+//THE FUNCTION removeCommonWords REMOVES ALL COMMON WORDS ENTERED BY THE USER SO THAT THE SQL CAN SEARCH FOR THE TERMS ENTERERED.
 function removeCommonWords($commonWords, $inputString) { // remove pre-defined common words
     if (!is_string($inputString)) {
         echo "Error: " . $inputString . " is not of type String. </br>";
@@ -102,6 +107,9 @@ function removeCommonWords($commonWords, $inputString) { // remove pre-defined c
     }
 }
 
+//THIS FUNCTION IS THE MAIN FUNCTION OF THE WEBSITE. IT IS HOW THE QUERY IS SELECTED IN ORDER TO RETURN THE RELEVANT RESULTS.
+//$query IS SET TO BE THE CORRESPONDING QUERY DEPENDING ON THE SEARCH TERMS ENTERED BY THE USER. IF ITS THE MAIN TITLE SEARCH
+//THEN THE SEARCH IS EVERYONE LIKE THAT TITLE. IF IT'S AUTHOR AND TITLE AND YEAR THEN IT NEEDS TO BE ALL THOSE FIELDS ETC...
 
 function chooseQuery(){
     global $title, $author, $publicationYear, $citationsMin, $citationsMax, $publisher, $keywords;
@@ -223,7 +231,8 @@ function chooseQuery(){
 
 };
 
-
+//The sortBy FUNCTION ALLOWS THE USER TO SORT THE PAPERS BY NUMBER OF CITATIONS OR BY YEAR PUBLISHED.
+//THE FUNCTION USES THE SQL ORDER BY TO SORT THE PAPERS INTO THE ORDER SELECTED BY THE USER.
 function sortBy($sortSelection) {
     $sortBy = "";
 
@@ -240,18 +249,20 @@ function sortBy($sortSelection) {
             $sortBy = " ORDER BY Cites DESC";
         }
     }
-    
+
     return $sortBy;
 }
-function keywordCount($keywordInput){
+/*function keywordCount($keywordInput){
     $text = $keywordInput;
     $words = str_word_count($text,1);
     $frequency = array_count_values($words);
     arsort($frequency);
     print_r($frequency);
 
-}
+}*/
 
+//THIS FUNCTION IS WHAT RETURNS THE SUGGESTED PAPERS. IF THE USER ENTERS A PUBLISHER THEN THE PUBLISHER IS USED TO FIND 
+//SUGGESTED PAPERS OTHERWISE IT CHECKS FOR KEYWORDS THAT ARE SIMILAR TO THE SEARCH TERM ENTERED BY THE USER AND RETURNS THEM
 
 function suggestedPapers($publisher){
     global $title;
@@ -275,12 +286,11 @@ function suggestedPapers($publisher){
             LIMIT 10";
         }
         return $suggested;
-    }
     
     else echo "Error: " . $publisher . " is not of type String. </br>";
 }
 
-
+//THE maxNoOfPapers FUNCTION LIMITS THE AMOUNT OF PAPERS RETURNED. THE USER CAN SELECT 10, 50, 100 OR 250 RESULTS TO BE DISPLAYED.
 function maxNoOfPapers($maxNo) {
     $limit = "";
     
@@ -299,9 +309,8 @@ function maxNoOfPapers($maxNo) {
     else if ($maxNo == 'show250') {
        $limit = " LIMIT 250";
     }
-    
    else if (!empty($maxNo)) { echo "Error: " . $maxNo . " is not a valid option to sort by. </br>"; }
-   
+
    return $limit;
     
 }
@@ -311,6 +320,10 @@ function maxNoOfPapers($maxNo) {
     $keywordRetrieval = "SELECT *
     FROM Papers
     WHERE Title = $title";
+
+
+
+
 
     return $keywordRetrieval;}*/
 
