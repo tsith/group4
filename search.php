@@ -37,7 +37,7 @@
  </div>
 
 <table id = "mainTable" border ="1" style = "double" width = "60%">
-    <caption>Search Results</caption>
+    <caption id='tableHeading'>Search Results</caption>
                         
                         
 <?php
@@ -86,14 +86,26 @@ echo "<br>" . $query;
 //CREATES A TABLE FOR THE RESULTS OF THE SEARCH TERMS ENTERED
 //ECHOING OUT THE AUTHORS, TITLE, ARTICLE URL AND SUMMARY
 //IF CANNOT CONNECT TO THE DATABASE THEN DISPLAY A MYSQLI ERROR
+//SENDS HIDDEN DATA FOR THE selectedPaper.php PAGE 
 
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
 
 while($row = mysqli_fetch_array($r)){
-	echo "<tr>";
+    echo "<tr>";
+    echo "<th id='tableHeading'>Citations</th>";
+    echo "<th id='tableHeading'>Author</th>";
+    echo "<th id='tableHeading'>Title</th>";
+    echo "<th id='tableHeading'>Year</th>";
+    echo "<th id='tableHeading'>Article URL</th>";
+    echo "<th id='tableHeading'>Summary</th>";
+    echo "<th id='tableHeading'>More Information</th>";
+    echo "</tr>";
+    echo"<tr>";
+    echo "<td>".$row['Cites']."</td>";
 	echo "<td><br>".$row['Authors']."</td>";
 	echo "<td>".$row['Title']."</td>";
+    echo "<td>".$row['Year']."</td>";
     echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
     echo "<td><br>".$row['Summary']."</td>";
     echo "<form method ='post' name ='moreInfo' action='selectedPaper.php' id='moreInfo'>
@@ -101,13 +113,15 @@ while($row = mysqli_fetch_array($r)){
     <input type='hidden' id='sendTitle' name='sendTitle' value='".$row['Title']."'>
     <input type='hidden' id='sendAuthor' name='sendAuthor' value='".$row['Authors']."'>
     <input type='hidden' id='sendPublisher' name='sendPublisher' value='".$row['Publisher']."'>
+    <input type='hidden' id='sendYear' name='sendYear' value='".$row['Year']."'>
+    <input type='hidden' id='sendCites' name='sendCites' value='".$row['Cites']."'>
     <input type='hidden' id='sendSummary' name='sendSummary' value='".$row['Summary']."'></form>";
 
 }
 
 ?>
 <table id = "suggestedTable" border ="2" style = "double" width = "20%">
-	<caption>Suggested Papers</caption>
+	<caption id='tableHeading'>Suggested Papers</caption>
 <?php
 //CALLS THE SUGGESTEDPAPERS() FUNCTION FROM THE FUNCTIONS.PHP FILE
 
@@ -122,9 +136,20 @@ $r1 = mysqli_query($con, $test, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
 
 while($row = mysqli_fetch_array($r1)){
-	echo "<tr>";
+    echo "<tr>";
+    echo "<th id='tableHeading'>Citations</th>";
+    echo "<th id='tableHeading'>Author</th>";
+    echo "<th id='tableHeading'>Title</th>";
+    echo "<th id='tableHeading'>Year</th>";
+    echo "<th id='tableHeading'>Article URL</th>";
+    echo "<th id='tableHeading'>Summary</th>";
+    echo "<th id='tableHeading'>More Information</th>";
+    echo "</tr>";
+    echo"<tr>";
+    echo "<td>".$row['Cites']."</td>";
 	echo "<td><br>".$row['Authors']."</td>";
 	echo "<td>".$row['Title']."</td>";
+    echo "<td>".$row['Year']."</td>";
 	echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
 	echo "<td><br>".$row['Summary']."</td>";
     echo "<form method ='post' name ='moreInfo' action='selectedPaper.php' id='moreInfo'>
@@ -132,6 +157,8 @@ while($row = mysqli_fetch_array($r1)){
     <input type='hidden' id='sendTitle' name='sendTitle' value='".$row['Title']."'>
     <input type='hidden' id='sendAuthor' name='sendAuthor' value='".$row['Authors']."'>
     <input type='hidden' id='sendPublisher' name='sendPublisher' value='".$row['Publisher']."'>
+    <input type='hidden' id='sendYear' name='sendYear' value='".$row['Year']."'>
+    <input type='hidden' id='sendCites' name='sendCites' value='".$row['Cites']."'>
     <input type='hidden' id='sendSummary' name='sendSummary' value='".$row['Summary']."'></form>";
 
 
