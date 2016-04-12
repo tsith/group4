@@ -1,11 +1,11 @@
 .area{
-	position:absolute;
-	left:35%;
-	margin-top:10%;
-	width: 300px;
-  	vertical-align: middle;
-  	white-space: nowrap;
- 	position: relative;
+  position:absolute;
+  left:35%;
+  margin-top:10%;
+  width: 300px;
+    vertical-align: middle;
+    white-space: nowrap;
+  position: relative;
  }
 
  .titled{
@@ -25,12 +25,11 @@
  }
 
  table {
- 	font-family: Tahoma, Verdana, Segoe, sans-serif;
     border-collapse: collapse;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
     width: 100%;
 }
 tr{
-
   background-color: #9898A0;
 }
 th{
@@ -168,4 +167,8 @@ font-family:'Raleway',sans-serif
   border-radius:10px;
   -moz-border-radius:10px;
   -webkit-border-radius:10px;
+}
+
+#tableHeading{
+  color:white;
 }
