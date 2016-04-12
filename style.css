@@ -25,11 +25,12 @@
  }
 
  table {
+ 	font-family: Tahoma, Verdana, Segoe, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 tr{
-  font-family: Arial;
+
   background-color: #9898A0;
 }
 th{
