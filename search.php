@@ -108,14 +108,15 @@ while($row = mysqli_fetch_array($r)){
     echo "<td>".$row['Year']."</td>";
     echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
     echo "<td><br>".$row['Summary']."</td>";
-    echo "<form method ='post' name ='moreInfo' action='selectedPaper.php' id='moreInfo'>
-    <td><input type='submit'  class='button' value='More Info'></td>
+    echo "<form method ='post' name ='moreInfo' action='SelectedPaper.php' id='moreInfo'>
+    <td><button type='submit' class='button'>More Info</button></td>
     <input type='hidden' id='sendTitle' name='sendTitle' value='".$row['Title']."'>
     <input type='hidden' id='sendAuthor' name='sendAuthor' value='".$row['Authors']."'>
     <input type='hidden' id='sendPublisher' name='sendPublisher' value='".$row['Publisher']."'>
     <input type='hidden' id='sendYear' name='sendYear' value='".$row['Year']."'>
     <input type='hidden' id='sendCites' name='sendCites' value='".$row['Cites']."'>
-    <input type='hidden' id='sendSummary' name='sendSummary' value='".$row['Summary']."'></form>";
+    <input type='hidden' id='sendSummary' name='sendSummary' value='".$row['Summary']."'>
+    <input type='hidden' id='sendURL' name='sendURL' value='".$row['ArticleURL']."'></form>";
 
 }
 
