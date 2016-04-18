@@ -18,7 +18,7 @@
 		<h3>Year Published: <?php echo $_POST['sendYear'];?></h3>
 		<h3>Citations: <?php echo $_POST['sendCites'];?></h3>
 
-		<div id="PaperIndent"><?php echo "<button onClick=".$_POST['sendURL'].">Go to Paper</button>";?></div>
+		<div id="PaperIndent"><?php echo "<form method='get' action=".$_POST['sendURL']."><button type='submit'>Go to Paper</button></form>";?></div>
 	</div>
 </div>
 </body>
