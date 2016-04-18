@@ -1,7 +1,7 @@
 <html lang ="en">
 <head>
 	<title>Group 4 SPMIS</title>
-	<meta charset = "utf-8" /><!--sets the character encoding for unicode-->
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"><!--sets the character encoding for unicode-->
 	<link rel='stylesheet' type ='text/css' href='style.css'/><!--links to my style sheet-->
 	<link rel='stylesheet' type ='text/css' href= 'foundation.css'/><!--links to my style sheet-->
 	<script type="text/javascript" src="javaScripts.js"></script><!--Links to the javascript file which carries out the error checking-->
@@ -47,6 +47,7 @@ include "functions.php";
 
 //CONNECTS TO THE DATABASE USING THE CORRECT CREDENTIALS
 $con = connect('csmysql.cs.cf.ac.uk', 'group4.2015', 'A3bb6@4kmna', 'group4_2015');
+mysqli_set_charset($con,"utf8"); //MAKES SURE THE CHARACTER ENCODING OF THE DATA IS UTF-8
 
 //THE COMMON WORDS ARE SET HERE SO THAT WE CAN REMOVE THEM WHEN SETTING THE VALUE OF THE PASSED INFORMATION
 $commonWords = 'and,the';
@@ -153,14 +154,15 @@ while($row = mysqli_fetch_array($r1)){
     echo "<td>".$row['Year']."</td>";
 	echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
 	echo "<td><br>".$row['Summary']."</td>";
-    echo "<form method ='post' name ='moreInfo' action='selectedPaper.php' id='moreInfo'>
-    <td><input type='submit'  class='button' value='More Info'></td>
+    echo "<form method ='post' name ='moreInfo' action='SelectedPaper.php' id='moreInfo'>
+    <td><button type='submit' class='button'>More Info</button></td>
     <input type='hidden' id='sendTitle' name='sendTitle' value='".$row['Title']."'>
     <input type='hidden' id='sendAuthor' name='sendAuthor' value='".$row['Authors']."'>
     <input type='hidden' id='sendPublisher' name='sendPublisher' value='".$row['Publisher']."'>
     <input type='hidden' id='sendYear' name='sendYear' value='".$row['Year']."'>
     <input type='hidden' id='sendCites' name='sendCites' value='".$row['Cites']."'>
-    <input type='hidden' id='sendSummary' name='sendSummary' value='".$row['Summary']."'></form>";
+    <input type='hidden' id='sendSummary' name='sendSummary' value='".$row['Summary']."'>
+    <input type='hidden' id='sendURL' name='sendURL' value='".$row['ArticleURL']."'></form>";
 
 
 }
