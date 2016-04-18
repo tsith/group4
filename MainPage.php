@@ -7,11 +7,10 @@ if (isset($_COOKIE['Query'])){
 else echo "";
 
 ?>
-
 <html lang ="en">
 <head>
 	<title>Student Search</title>
-	<meta charset = "utf-8" /><!--sets the character encoding for unicode-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">  <!--sets the character encoding for unicode-->
 	<link rel='stylesheet' type ='text/css' href='style.css'/><!--links to my style sheet-->
 	<link rel="stylesheet" type="text/css" href="foundation.css"/>
 	<script type="text/javascript" src="javaScripts.js"></script>
@@ -19,8 +18,8 @@ else echo "";
 <body onload ="div_hide()">
 <div class="area">
 <div class = 'container-1'>
-	
-			<h1>Student Scholar</h1>
+	        
+			<h1>Paper Search</h1>
 			<h3>Search for a paper</h3>
 			<form method ="post" name ="searchBox"  action ="search.php" id="searchform">
                 <input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' autofocus >
