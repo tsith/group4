@@ -91,8 +91,6 @@ echo "<br>" . $query;
 
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
-
-while($row = mysqli_fetch_array($r)){
     echo "<tr>";
     echo "<th id='tableHeading'>Citations</th>";
     echo "<th id='tableHeading'>Author</th>";
@@ -102,6 +100,7 @@ while($row = mysqli_fetch_array($r)){
     echo "<th id='tableHeading'>Summary</th>";
     echo "<th id='tableHeading'>More Information</th>";
     echo "</tr>";
+while($row = mysqli_fetch_array($r)){
     echo"<tr>";
     echo "<td>".$row['Cites']."</td>";
 	echo "<td><br>".$row['Authors']."</td>";
@@ -136,8 +135,6 @@ $test = suggestedPapers($publisher);
 
 $r1 = mysqli_query($con, $test, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
-
-while($row = mysqli_fetch_array($r1)){
     echo "<tr>";
     echo "<th id='tableHeading'>Citations</th>";
     echo "<th id='tableHeading'>Author</th>";
@@ -147,6 +144,7 @@ while($row = mysqli_fetch_array($r1)){
     echo "<th id='tableHeading'>Summary</th>";
     echo "<th id='tableHeading'>More Information</th>";
     echo "</tr>";
+while($row = mysqli_fetch_array($r1)){
     echo"<tr>";
     echo "<td>".$row['Cites']."</td>";
 	echo "<td><br>".$row['Authors']."</td>";
