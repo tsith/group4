@@ -10,20 +10,35 @@ else echo "";
 <html lang ="en">
 <head>
 	<title>Student Search</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">  <!--sets the character encoding for unicode-->
+	<meta charset = "utf-8" /><!--sets the character encoding for unicode-->
 	<link rel='stylesheet' type ='text/css' href='style.css'/><!--links to my style sheet-->
 	<link rel="stylesheet" type="text/css" href="foundation.css"/>
 	<script type="text/javascript" src="javaScripts.js"></script>
 
 <body onload ="div_hide()">
 <div class="area">
-<div class = 'container-1'>
-	        
-			<h1>Paper Search</h1>
+
+	       <div id ="IndentTitle">
+			<h1>Student Scholar</h1>
 			<h3>Search for a paper</h3>
+        </div>
+
+            <div class="logo">
+            <img src="logo.png" alt="Mountain View" style="width:50px;height:50px;"></div>
+
+            <div class = 'container-1'>
+
 			<form method ="post" name ="searchBox"  action ="search.php" id="searchform">
                 <input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' autofocus >
 
+
+                <!--THE SEARCH BUTTON WHEN CLICKED CALLS THE javaScript.js FILE TO CHECK THE INPUT ENTERED MATCHES THE VALIDATION -->
+                <input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
+                <br>
+            </div>
+
+            <div class ='container-2'>
+                <div id='IndentDropdown'>
                 <!--SETS THE COMBO BOX FOR SORTING THE PAPERS WHEN RETURNED, WHETHER SORTED BY NUMBER OF CITATIONS OR YEAR PUBLISHED-->
                 <select class="sort" name="sort" form="searchform">
                     <option value="" disabled selected>Sort by:</option>
@@ -41,10 +56,8 @@ else echo "";
                     <option value="show100" name="show100">100</option>
                     <option value="show250" name="show250">250</option>
                 </select>
-
-                <!--THE SEARCH BUTTON WHEN CLICKED CALLS THE javaScript.js FILE TO CHECK THE INPUT ENTERED MATCHES THE VALIDATION -->
-                <input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
-                <br>
+            </div>
+            </div>              
 
                 <!--<href="#" id = "AdditionalSearch" class = "button" onclick= "div_show()" id="popup">Additional Search-->
 			<div id="IndentBit"><input id="AdditionalSearch" class= "button" href="#" onclick="div_show()" id= "popup" width="5" value="Advanced Search"></div>
@@ -52,13 +65,15 @@ else echo "";
 			</form>
  	</div>
 </div>
-
+</div>
 
 <div id="abc" class="callout" visibility="hidden" data-closable>
 <!-- Popup Div Starts Here -->
+<div class="adSearch">
 	<button  id="xbutton" class="close-button" aria-label="Dismiss alert" type="button" data-close onclick="div_hide()">
          <span aria-hidden="true">&times;</span>
     </button>
+</div>
 <div id="popupContact">
 	<!-- Contact Us Form -->
 	<form action="search.php" id="form" method="post" name="form">
