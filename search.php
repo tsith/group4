@@ -96,17 +96,17 @@ $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     echo "<th id='tableHeading'>Author</th>";
     echo "<th id='tableHeading'>Title</th>";
     echo "<th id='tableHeading'>Year</th>";
-    echo "<th id='tableHeading'>Article URL</th>";
+    // echo "<th id='tableHeading'>Article URL</th>";
     echo "<th id='tableHeading'>Summary</th>";
     echo "<th id='tableHeading'>More Information</th>";
     echo "</tr>";
 while($row = mysqli_fetch_array($r)){
     echo"<tr>";
     echo "<td>".$row['Cites']."</td>";
-	echo "<td><br>".$row['Authors']."</td>";
+	echo "<td>".$row['Authors']."</td>";
 	echo "<td>".$row['Title']."</td>";
     echo "<td>".$row['Year']."</td>";
-    echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
+    // echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
     echo "<td><br>".$row['Summary']."</td>";
     echo "<form method ='post' name ='moreInfo' action='SelectedPaper.php' id='moreInfo'>
     <td><button type='submit' class='button'>More Info</button></td>
@@ -140,17 +140,17 @@ $r1 = mysqli_query($con, $test, MYSQLI_STORE_RESULT)
     echo "<th id='tableHeading'>Author</th>";
     echo "<th id='tableHeading'>Title</th>";
     echo "<th id='tableHeading'>Year</th>";
-    echo "<th id='tableHeading'>Article URL</th>";
+    // echo "<th id='tableHeading'>Article URL</th>";
     echo "<th id='tableHeading'>Summary</th>";
     echo "<th id='tableHeading'>More Information</th>";
     echo "</tr>";
 while($row = mysqli_fetch_array($r1)){
     echo"<tr>";
     echo "<td>".$row['Cites']."</td>";
-	echo "<td><br>".$row['Authors']."</td>";
+	echo "<td>".$row['Authors']."</td>";
 	echo "<td>".$row['Title']."</td>";
     echo "<td>".$row['Year']."</td>";
-	echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
+	// echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
 	echo "<td><br>".$row['Summary']."</td>";
     echo "<form method ='post' name ='moreInfo' action='SelectedPaper.php' id='moreInfo'>
     <td><button type='submit' class='button'>More Info</button></td>
