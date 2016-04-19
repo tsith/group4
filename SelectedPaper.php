@@ -7,7 +7,9 @@
 	<script type="text/javascript" src="javaScripts.js"></script>
 <body>
 
+
 <div class="titled">
+<a href="MainPage.php"><img src="logo.png" alt="Mountain View" style="width:50px;height:50px;"></a><!--ADDS THE LOGO TO THE WEBSITE-->
 <h1>Selected Paper</h1>
 	<div class = 'contained'>
 		<h3>Title: <?php echo $_POST['sendTitle'];?></h3>
