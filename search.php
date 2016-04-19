@@ -1,18 +1,24 @@
 <html lang ="en">
 <head>
-	<title>Group 4 SPMIS</title>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"><!--sets the character encoding for unicode-->
-	<link rel='stylesheet' type ='text/css' href='style.css'/><!--links to my style sheet-->
-	<link rel='stylesheet' type ='text/css' href= 'foundation.css'/><!--links to my style sheet-->
-	<script type="text/javascript" src="javaScripts.js"></script><!--Links to the javascript file which carries out the error checking-->
-	
-	<body>
+    <title>Group 4 SPMIS</title>
+    <meta charset = "utf-8" /><!--sets the character encoding for unicode-->
+    <link rel='stylesheet' type ='text/css' href='style.css'/><!--links to my style sheet-->
+    <link rel='stylesheet' type ='text/css' href= 'foundation.css'/><!--links to my style sheet-->
+    <script type="text/javascript" src="javaScripts.js"></script><!--Links to the javascript file which carries out the error checking-->
+    
+    <body>
+
+    
 
 <div class = 'container-1'>
-			<h3>Search for a paper</h3>
-			<form method ="post" name ="searchBox"  action ="search.php" id="searchform">
+            <h3>Search for a Paper</h3>
+            <div class="logo"><!--ADDS THE LOGO TO THE WEBSITE-->
+            <a href="MainPage.php"><img src="logo.png" alt="Mountain View" style="width:50px;height:50px;"></a></div>
+
+            <form method ="post" name ="searchBox"  action ="search.php" id="searchform">
                 <input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' >
 
+                <!--ADDS THE SORT BY CITATIONS AND YEAR COMBO BOX TO THE SEARCH PAGE-->
                 <select class="sort" name="sort" form="searchform">
                     <option value="" disabled selected>Sort by:</option>
                     <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
@@ -21,6 +27,8 @@
                     <option value="sortYearDesc" name="sortYearDesc">Newest</option>
                 </select>
                 
+                <!--ADDS THE NO OF RESULTS TO SHOW COMBO BOX TO THE SEARCH PAGE-->
+
                 <select class="noOfResults" name="noOfResults" form="searchform">
                     <option value="" disabled selected>No. of Results to Show:</option>
                     <option value="show10" name="show10">10</option>
@@ -31,9 +39,9 @@
                 <!--when the search button is clicked it runs the validation in the javaScript file that ensures the input entered is correct-->
                 <input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
                 <br>
-			
-			</form>
- 	</div>
+            
+            </form>
+    </div>
  </div>
 
 <table id = "mainTable" border ="1" style = "double" width = "60%">
@@ -77,8 +85,8 @@ if (!isset($_COOKIE['Query'])){
 }
 //IF THE COOKIE IS SET THEN MAKE A LINK TO THE MAIN PAGE FOR THE USER TO SEE THEIR PREVIOUS SEARCH TERMS
 if(isset($_COOKIE['Query'])){
-	setcookie("Query", $title);
-	echo "<a href='MainPage.php'>Previous Searches</a>";
+    setcookie("Query", $title);
+    echo "<a href='MainPage.php'>Previous Searches</a>";
 }
 
 // DEVELOPMEPER NOTE: SHOW CURRENT QUERY -> TO BE REMOVED IN FINAL VERSION.
@@ -103,8 +111,8 @@ $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
 while($row = mysqli_fetch_array($r)){
     echo"<tr>";
     echo "<td>".$row['Cites']."</td>";
-	echo "<td>".$row['Authors']."</td>";
-	echo "<td>".$row['Title']."</td>";
+    echo "<td>".$row['Authors']."</td>";
+    echo "<td>".$row['Title']."</td>";
     echo "<td>".$row['Year']."</td>";
     // echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
     echo "<td><br>".$row['Summary']."</td>";
@@ -122,7 +130,7 @@ while($row = mysqli_fetch_array($r)){
 
 ?>
 <table id = "suggestedTable" border ="2" style = "double" width = "20%">
-	<caption id='tableHeading'>Suggested Papers</caption>
+    <caption id='tableHeading'>Suggested Papers</caption>
 <?php
 //CALLS THE SUGGESTEDPAPERS() FUNCTION FROM THE FUNCTIONS.PHP FILE
 
@@ -147,11 +155,11 @@ $r1 = mysqli_query($con, $test, MYSQLI_STORE_RESULT)
 while($row = mysqli_fetch_array($r1)){
     echo"<tr>";
     echo "<td>".$row['Cites']."</td>";
-	echo "<td>".$row['Authors']."</td>";
-	echo "<td>".$row['Title']."</td>";
+    echo "<td>".$row['Authors']."</td>";
+    echo "<td>".$row['Title']."</td>";
     echo "<td>".$row['Year']."</td>";
-	// echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
-	echo "<td><br>".$row['Summary']."</td>";
+    // echo "<td><a href=".$row['ArticleURL'].">".$row['ArticleURL']."</a></td>";
+    echo "<td><br>".$row['Summary']."</td>";
     echo "<form method ='post' name ='moreInfo' action='SelectedPaper.php' id='moreInfo'>
     <td><button type='submit' class='button'>More Info</button></td>
     <input type='hidden' id='sendTitle' name='sendTitle' value='".$row['Title']."'>
