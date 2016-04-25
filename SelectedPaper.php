@@ -9,11 +9,11 @@
 
 
 <div class="titled">
-<a href="MainPage.php"><img src="logo.png" alt="Mountain View" style="width:50px;height:50px;"></a><!--ADDS THE LOGO TO THE WEBSITE-->
+<div class="logo"><a href="MainPage.php"><img src="logo.png" alt="Mountain View" style="width:50px;height:50px;"></a></div><!--ADDS THE LOGO TO THE WEBSITE-->
 <h1>Selected Paper</h1>
 	<div class = 'contained'>
 		<h3>Title: <?php echo $_POST['sendTitle'];?></h3>
-		<textarea class="summary" disabled><?php echo $_POST['sendSummary'];?></textarea>
+		<table class= "summary"><tr><td><?php echo $_POST['sendSummary'];?></td></tr></table>
 		<h3>Author: <?php echo $_POST['sendAuthor'];?></h3>
 
 		<h3>Publisher: <?php echo $_POST['sendPublisher'];?></h3>
