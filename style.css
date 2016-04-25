@@ -158,7 +158,7 @@ background-color:#FFFFFF;
 }
 
 .noOfResults {
-    max-width: 55%;
+    max-width: 83%;
     margin-left: 10px;
 }
 
@@ -204,3 +204,6 @@ font-family:'Raleway',sans-serif
   color:white;
 }
 
+#AdditionalSearch{
+  width:90%
+}
