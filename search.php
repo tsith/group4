@@ -17,7 +17,7 @@
             <a href="MainPage.php"><img src="logo.png" alt="Mountain View" style="width:50px;height:50px;"></a></div>
 
             <form method ="post" name ="searchBox"  action ="search.php" id="searchform">
-                <input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' >
+                <input type='search' name = 'title' id = "title"  size = '15' placeholder = '<?php echo $_COOKIE['Query']; ?> '>
                 <!--ADDS THE SORT BY CITATIONS AND YEAR COMBO BOX TO THE SEARCH PAGE-->
                 <select id= "searchsort" class="sort" name="sort" form="searchform">
                     <option value="" disabled selected>Sort by:</option>
