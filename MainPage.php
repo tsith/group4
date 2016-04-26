@@ -40,7 +40,7 @@ else echo "";
             <div class ='container-2'>
                 <div id='IndentDropdown'>
                 <!--SETS THE COMBO BOX FOR SORTING THE PAPERS WHEN RETURNED, WHETHER SORTED BY NUMBER OF CITATIONS OR YEAR PUBLISHED-->
-                <select class="sort" name="sort" form="searchform">
+                <select id ="sort" class="sort" name="sort" form="searchform">
                     <option value="" disabled selected>Sort by:</option>
                     <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
                     <option value="sortCitationsAsc" name="sortCitationsAsc">Least Citations</option>
@@ -49,7 +49,7 @@ else echo "";
                 </select>
                 
                 <!--SETS THE COMBO BOX FOR LIMITING THE AMOUNT OF PAPERS YOU WISH TO DISPLAY-->
-                <select class="noOfResults" name="noOfResults" form="searchform">
+                <select id= "noOfResults" class="noOfResults" name="noOfResults" form="searchform">
                     <option value="" disabled selected>No. of Results to Show:</option>
                     <option value="show10" name="show10">10</option>
                     <option value="show50" name="show50">50</option>

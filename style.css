@@ -152,12 +152,12 @@ background-color:#FFFFFF;
 }
 
 
-.sort {  
+#sort {  
     max-width: 40%;
     margin-left: 10px;
 }
 
-.noOfResults {
+#noOfResults {
     max-width: 83%;
     margin-left: 10px;
 }
@@ -206,4 +206,29 @@ font-family:'Raleway',sans-serif
 
 #AdditionalSearch{
   width:90%
+}
+
+#searchsort{
+    position:relative;
+    /*margin-top:25px;*/
+    margin-left:62px;
+    width:20%;
+}
+
+#searchnoOfresults{
+  position:absolute;
+    margin-top:0px;
+    margin-left:20px;
+    width:12%;
+}
+.searchbar{
+  margin-left:90px;
+  margin-top:30px;
+}
+
+#searchbuttonsearch{
+  position:absolute;
+  border-radius:5px;
+  margin-top:-68px;
+  margin-left:225px;
 }

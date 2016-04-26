@@ -8,18 +8,18 @@
     
     <body>
 
+<div class= 'searchbar'>
     
-
 <div class = 'container-1'>
+
             <h3>Search for a Paper</h3>
             <div class="logo"><!--ADDS THE LOGO TO THE WEBSITE-->
             <a href="MainPage.php"><img src="logo.png" alt="Mountain View" style="width:50px;height:50px;"></a></div>
 
             <form method ="post" name ="searchBox"  action ="search.php" id="searchform">
                 <input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...' >
-
                 <!--ADDS THE SORT BY CITATIONS AND YEAR COMBO BOX TO THE SEARCH PAGE-->
-                <select class="sort" name="sort" form="searchform">
+                <select id= "searchsort" class="sort" name="sort" form="searchform">
                     <option value="" disabled selected>Sort by:</option>
                     <option value="sortCitationsDesc" name="sortCitationsDesc">Most Citations</option>
                     <option value="sortCitationsAsc" name="sortCitationsAsc">Least Citations</option>
@@ -29,7 +29,7 @@
                 
                 <!--ADDS THE NO OF RESULTS TO SHOW COMBO BOX TO THE SEARCH PAGE-->
 
-                <select class="noOfResults" name="noOfResults" form="searchform">
+                <select id= "searchnoOfresults" class="noOfResults" name="noOfResults" form="searchform">
                     <option value="" disabled selected>No. of Results to Show:</option>
                     <option value="show10" name="show10">10</option>
                     <option value="show50" name="show50">50</option>
@@ -37,13 +37,13 @@
                     <option value="show250" name="show250">250</option>
                 </select>
                 <!--when the search button is clicked it runs the validation in the javaScript file that ensures the input entered is correct-->
-                <input id ="searchbutton" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
+                <input id ="searchbuttonsearch" class="button" type = "submit" name="submit" value ="Search" onclick="checkTextField(this)">
                 <br>
             
             </form>
-    </div>
+   </div>
  </div>
-
+</div>
 <table id = "mainTable" border ="1" style = "double" width = "60%">
     <caption id='tableHeading'>Search Results</caption>
                         
