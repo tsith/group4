@@ -1,12 +1,12 @@
 <!--THIS PHP SECTION PRINTS OUT THE COOKIE SET FROM THE SEARCH TERMS AND ECHOS IT TO THE SCREEN
-    IF NO COOKIE IS SET THEN NOTHING IS ECHOED OUT-->
+    IF NO COOKIE IS SET THEN NOTHING IS ECHOED OUT
 <?php
-if (isset($_COOKIE['Query'])){
+/*if (isset($_COOKIE['Query'])){
     echo "Previous Search =  ". $_COOKIE['Query']."<BR>";
 }
-else echo "";
+else echo "";*/
 
-?>
+?> -->
 <html lang ="en">
 <head>
     <title>Student Search</title>

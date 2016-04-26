@@ -86,12 +86,12 @@ if (!isset($_COOKIE['Query'])){
 //IF THE COOKIE IS SET THEN MAKE A LINK TO THE MAIN PAGE FOR THE USER TO SEE THEIR PREVIOUS SEARCH TERMS
 if(isset($_COOKIE['Query'])){
     setcookie("Query", $title);
-    echo "<a href='MainPage.php'>Previous Searches</a>";
+    //echo "<a href='MainPage.php'>Previous Searches</a>";
 }
-
+/*
 // DEVELOPMEPER NOTE: SHOW CURRENT QUERY -> TO BE REMOVED IN FINAL VERSION.
 echo "<br>" . $query;
-
+*/
 //CREATES A TABLE FOR THE RESULTS OF THE SEARCH TERMS ENTERED
 //ECHOING OUT THE AUTHORS, TITLE, ARTICLE URL AND SUMMARY
 //IF CANNOT CONNECT TO THE DATABASE THEN DISPLAY A MYSQLI ERROR
