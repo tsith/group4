@@ -210,15 +210,15 @@ font-family:'Raleway',sans-serif
 
 #searchsort{
     position:relative;
-    /*margin-top:25px;*/
-    margin-left:62px;
+    margin-top:-60px;
+    margin-left:375px;
     width:20%;
 }
 
 #searchnoOfresults{
   position:absolute;
-    margin-top:0px;
-    margin-left:20px;
+    margin-top:-60px;
+    margin-left:470px;
     width:12%;
 }
 .searchbar{
@@ -229,6 +229,6 @@ font-family:'Raleway',sans-serif
 #searchbuttonsearch{
   position:absolute;
   border-radius:5px;
-  margin-top:-68px;
-  margin-left:225px;
+  margin-top:-66px;
+  margin-left:670px;
 }
