@@ -131,7 +131,7 @@ while($row = mysqli_fetch_array($r)){
 
 ?>
 <table id = "suggestedTable" border ="2" style = "double" width = "20%">
-    <caption id='tableHeading'>Suggested Papers</caption>
+
 <?php
 //CALLS THE SUGGESTEDPAPERS() FUNCTION FROM THE FUNCTIONS.PHP FILE
 
@@ -141,6 +141,7 @@ $test = suggestedPapers($publisher);
 //CREATES A TABLE FOR THE RESULTS OF SUGGESTED PAPERS
 //ECHOING OUT THE AUTHORS, TITLE, ARTICLE URL AND SUMMARY
 //IF CANNOT CONNECT TO THE DATABASE THEN DISPLAY A MYSQLI ERROR
+echo "<caption id='tableHeading'>Suggested Papers for ".$title."</caption>";
 
 $r1 = mysqli_query($con, $test, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
