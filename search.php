@@ -17,7 +17,7 @@
             <a href="MainPage.php"><img src="logo.png" alt="Mountain View" style="width:50px;height:50px;"></a></div>
 
             <form method ="post" name ="searchBox"  action ="search.php" id="searchform">
-                <input type='search' name = 'title' id = "title"  size = '15' placeholder = '<?php echo $_COOKIE['Query']; ?> '>
+                <input type='search' name = 'title' id = "title"  size = '15' placeholder = 'Search...'>
                 <!--ADDS THE SORT BY CITATIONS AND YEAR COMBO BOX TO THE SEARCH PAGE-->
                 <select id= "searchsort" class="sort" name="sort" form="searchform">
                     <option value="" disabled selected>Sort by:</option>
@@ -45,7 +45,7 @@
  </div>
 </div>
 <table id = "mainTable" border ="1" style = "double" width = "60%">
-    <caption id='tableHeading'>Search Results</caption>
+    
                         
                         
 <?php
@@ -86,16 +86,17 @@ if (!isset($_COOKIE['Query'])){
 //IF THE COOKIE IS SET THEN MAKE A LINK TO THE MAIN PAGE FOR THE USER TO SEE THEIR PREVIOUS SEARCH TERMS
 if(isset($_COOKIE['Query'])){
     setcookie("Query", $title);
-    //echo "<a href='MainPage.php'>Previous Searches</a>";
 }
 /*
 // DEVELOPMEPER NOTE: SHOW CURRENT QUERY -> TO BE REMOVED IN FINAL VERSION.
-echo "<br>" . $query;
+
 */
 //CREATES A TABLE FOR THE RESULTS OF THE SEARCH TERMS ENTERED
 //ECHOING OUT THE AUTHORS, TITLE, ARTICLE URL AND SUMMARY
 //IF CANNOT CONNECT TO THE DATABASE THEN DISPLAY A MYSQLI ERROR
 //SENDS HIDDEN DATA FOR THE selectedPaper.php PAGE 
+
+echo "<caption id='tableHeading'>Search Results for ".$title."</caption>";
 
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
