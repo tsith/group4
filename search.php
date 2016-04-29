@@ -67,7 +67,7 @@ $publicationYear = removeCommonWords($commonWords, setVal('Year'));
 $publisher = removeCommonWords($commonWords, setVal('publisher'));
 $citationsMin = removeCommonWords($commonWords, setVal('citationsMin'));
 $citationsMax = removeCommonWords($commonWords, setVal('citationsMax'));
-$keywords = removeCommonWords($commonWords, setVal('Keywords'));
+$keywords = removeCommonWords($commonWords, setVal('keywords'));
 
 
 
@@ -90,16 +90,29 @@ if (!isset($_COOKIE['Query'])){
 if(isset($_COOKIE['Query'])){
     setcookie("Query", $title);
 }
-/*
-// DEVELOPMEPER NOTE: SHOW CURRENT QUERY -> TO BE REMOVED IN FINAL VERSION.
 
-*/
+/*
 //CREATES A TABLE FOR THE RESULTS OF THE SEARCH TERMS ENTERED
 //ECHOING OUT THE AUTHORS, TITLE, ARTICLE URL AND SUMMARY
 //IF CANNOT CONNECT TO THE DATABASE THEN DISPLAY A MYSQLI ERROR
-//SENDS HIDDEN DATA FOR THE selectedPaper.php PAGE 
+//SENDS HIDDEN DATA FOR THE selectedPaper.php PAGE */
 
-echo "<caption id='tableHeading'>Search Results for ".$title."</caption>";
+//Prints out the caption for the table depending on what fields are entered
+if(!empty($publisher)){
+    echo"<caption id='tableHeading'>Search Results for ".$publisher."</caption>";
+}
+else if (!empty($keywords) && !empty($title) && !empty($author)){
+    echo"<caption id='tableHeading'>Search Results for ".$author,' + ', $title, ' + ',$keywords."</caption>";
+}
+else if(!empty($author) and empty($title) && empty($keywords)){
+    echo"<caption id='tableHeading'>Search Results for ".$author."</caption>";
+}
+else if (!empty($publicationYear)){
+    echo"<caption id='tableHeading'>Search Results for ".' Year ',$publicationYear."</caption>";
+}
+else{
+    echo "<caption id='tableHeading'>Search Results for ".$title."</caption>";
+}
 
 $r = mysqli_query($con, $query, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
@@ -144,7 +157,21 @@ $test = suggestedPapers($publisher);
 //CREATES A TABLE FOR THE RESULTS OF SUGGESTED PAPERS
 //ECHOING OUT THE AUTHORS, TITLE, ARTICLE URL AND SUMMARY
 //IF CANNOT CONNECT TO THE DATABASE THEN DISPLAY A MYSQLI ERROR
-echo "<caption id='tableHeading'>Suggested Papers for ".$title."</caption>";
+if(!empty($publisher)){
+    echo"<caption id='tableHeading'>Suggested Results for ".$publisher."</caption>";
+}
+else if (!empty($keywords) && !empty($title) && !empty($author)){
+    echo"<caption id='tableHeading'>Suggested Results for ".$author,' + ', $title, ' + ',$keywords."</caption>";
+}
+else if(!empty($author) and empty($title) && empty($keywords)){
+    echo"<caption id='tableHeading'>Suggested Results for ".$author."</caption>";
+}
+else if (!empty($publicationYear)){
+    echo"<caption id='tableHeading'>Suggested Results for ".' Year ',$publicationYear."</caption>";
+}
+else{
+    echo "<caption id='tableHeading'>Suggested Results for ".$title."</caption>";
+}
 
 $r1 = mysqli_query($con, $test, MYSQLI_STORE_RESULT)
     or die("Failed to connect: " . mysqli_error($con));
