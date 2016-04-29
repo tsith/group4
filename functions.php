@@ -65,9 +65,9 @@ function setVal($value) {  // set all POST values with this function
         } else $value = '';
     }
     
-    else if (strcmp($value, 'Keywords') == 0) {
-        if (!empty($_POST['Keywords'])) {
-            $value = $_POST['Keywords'];
+    else if (strcmp($value, 'keywords') == 0) {
+        if (!empty($_POST['keywords'])) {
+            $value = $_POST['keywords'];
         } else $value = '';
         
     }
@@ -141,14 +141,14 @@ function chooseQuery(){
     else if (!empty($keywords) && empty($author) && empty($title) && empty($publicationYear) && empty ($citationsMax) && empty($citationsMin) and empty($publisher)) {
         $query = "SELECT *
         FROM Papers
-        WHERE keywords = '$keywords'";
+        WHERE Keywords LIKE '%$keywords%'";
     }
 
     // SEARCH BY TITLE & KEYWORDS
     else if (!empty($keywords) && !empty($title) && empty($author) && empty($publicationYear) && empty($citationsMin) && empty($citationsMax) and empty($publisher)) {
         $query = "SELECT *
         FROM Papers
-        WHERE keywords = '$keywords'
+        WHERE Keywords LIKE '%$keywords%'
         AND Title Like '%$title%'";
     }
 
@@ -158,11 +158,11 @@ function chooseQuery(){
         FROM Papers
         WHERE Keywords LIKE '%$keywords%'
         AND Title LIKE '%$title%'
-        AND uthors LIKE '%$author%'";
+        AND Authors LIKE '%$author%'";
     }
 
     // SEARCH BY PUBLICATION YEAR
-    else if (!empty($publicationYear) && empty($title) && empty($author) && empty($publicationYear) && empty($citationsMax) && empty($citationsMin) and empty($publisher)) {
+    else if (!empty($publicationYear) && empty($title) && empty($author)  && empty($citationsMax) && empty($citationsMin) and empty($publisher)) {
         $query = "SELECT *
         FROM Papers
         WHERE Year = '$publicationYear'";
