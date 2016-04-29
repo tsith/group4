@@ -67,7 +67,7 @@ $publicationYear = removeCommonWords($commonWords, setVal('Year'));
 $publisher = removeCommonWords($commonWords, setVal('publisher'));
 $citationsMin = removeCommonWords($commonWords, setVal('citationsMin'));
 $citationsMax = removeCommonWords($commonWords, setVal('citationsMax'));
-$keywords = removeCommonWords($commonWords, setVal('Keywords));
+$keywords = removeCommonWords($commonWords, setVal('Keywords'));
 
 
 
